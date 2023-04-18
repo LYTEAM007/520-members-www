@@ -18,3 +18,7 @@ export const getPrizeThird = (data) => {
 export const recordHistory = (data) => {
   return service('get', '/api/user/prizelog', { ...data })
 }
+// 跳过开奖
+export const skipAnimei = (data) => {
+  return service('post', '/api/user/skipAnimei', { ...data })
+}

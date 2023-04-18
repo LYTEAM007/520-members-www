@@ -1,8 +1,6 @@
 <template>
   <div class="index">
-    <!-- <img src="../assets/image/pb.gif" alt="">
-    <img src="../assets/image/bh.gif" alt="">
-    <img src="../assets/image/tl.gif" alt=""> -->
+    <!-- 主页面 -->
     <div class="container">
       <div class="main">
         <div class="activeContent">
@@ -99,7 +97,7 @@
                 <el-col :span="24">
                   <el-row type="flex" justify="space-between" class="marginBottom30">
                     <el-col :span="14" class="btn noCursor">
-                      已获得彩金：{{ detail.act1_reword_prize }}元
+                      已获得彩金：{{ formatFigure(detail.act1_reword_prize) }}元
                     </el-col>
                     <el-col :span="8">
                       <div class="btnGray" @click="showRewardRecord('1')">
@@ -112,7 +110,7 @@
                   <el-col :span="24">
                     <el-row type="flex" class="progressText">
                       <el-col :span="12">
-                        累计有效存款：{{ detail.current_deposit_amount }}元
+                        累计有效存款：{{ formatFigure(detail.current_deposit_amount) }}元
                       </el-col>
                       <el-col :span="12" class="textRight red">
                         1,520元
@@ -129,7 +127,7 @@
                 <el-col :span="24">
                   <el-row type="flex" class="margin20">
                     <el-col :span="10" class="frames marginRight20">
-                      可冲刺次数：<span class="figure">{{ detail.act1_left_time }}</span>&nbsp;次
+                      可冲刺次数：<span class="figure">{{ formatFigure(detail.act1_left_time) }}</span>&nbsp;次
                     </el-col>
                     <el-col :span="14" class="frames ">
                       已获得的积分：<span class="figure">{{ detail.act1_reword_point }}</span>&nbsp;/&nbsp;100积分
@@ -152,7 +150,7 @@
                   </el-row>
                 </el-col>
                 <el-col :span="24" class="marginTop40">
-                  <el-checkbox v-model="checkedCc" @change="checkedCcChange">跳过开奖动画</el-checkbox>
+                  <el-checkbox v-model="detail.skip_animei" @change="checkedCcChange">跳过开奖动画</el-checkbox>
                 </el-col>
               </el-col>
             </el-row>
@@ -174,7 +172,7 @@
                 <el-col :span="24">
                   <el-row type="flex" justify="space-between" class="marginBottom30">
                     <el-col :span="14" class="btn noCursor">
-                      已获得彩金：{{ detail.act2_reword_prize }}元
+                      已获得彩金：{{ formatFigure(detail.act2_reword_prize) }}元
                     </el-col>
                     <el-col :span="8">
                       <div class="btnGray" @click="showRewardRecord('2')">
@@ -187,15 +185,15 @@
                   <el-col :span="24">
                     <el-row type="flex" class="progressText">
                       <el-col :span="12">
-                        体育累计有效投注：{{ detail.current_ty_bet_amount }} 元
+                        体育累计有效投注：{{ formatFigure(detail.current_ty_bet_amount) }} 元
                       </el-col>
                       <el-col :span="12" class="textRight red">
-                        1,520元
+                        2,880元
                       </el-col>
                     </el-row>
                     <el-row type="flex">
                       <el-col :span="24">
-                        <el-progress :stroke-width="14" :percentage="(detail.current_ty_bet_amount / 1500) * 100"
+                        <el-progress :stroke-width="14" :percentage="(detail.current_ty_bet_amount / 2880) * 100"
                           :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
@@ -203,15 +201,15 @@
                   <el-col :span="24">
                     <el-row type="flex" class="progressText">
                       <el-col :span="12">
-                        电竞累计有效投注：{{ detail.current_dj_bet_amount }} 元
+                        电竞累计有效投注：{{ formatFigure(detail.current_dj_bet_amount) }} 元
                       </el-col>
                       <el-col :span="12" class="textRight red">
-                        1,520元
+                        2,880元
                       </el-col>
                     </el-row>
                     <el-row type="flex">
                       <el-col :span="24">
-                        <el-progress :stroke-width="14" :percentage="(detail.current_dj_bet_amount / 1500) * 100"
+                        <el-progress :stroke-width="14" :percentage="(detail.current_dj_bet_amount / 2880) * 100"
                           :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
@@ -219,15 +217,15 @@
                   <el-col :span="24">
                     <el-row type="flex" class="progressText">
                       <el-col :span="12">
-                        电子累计有效投注：{{ detail.current_dz_bet_amount }}元
+                        电子累计有效投注：{{ formatFigure(detail.current_dz_bet_amount) }}元
                       </el-col>
                       <el-col :span="12" class="textRight red">
-                        1,520元
+                        2,880元
                       </el-col>
                     </el-row>
                     <el-row type="flex">
                       <el-col :span="24">
-                        <el-progress :stroke-width="14" :percentage="(detail.current_dz_bet_amount / 1500) * 100"
+                        <el-progress :stroke-width="14" :percentage="(detail.current_dz_bet_amount / 2880) * 100"
                           :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
@@ -236,7 +234,7 @@
                 <el-col :span="24">
                   <el-row type="flex" class="margin20">
                     <el-col :span="10" class="frames marginRight20">
-                      可投篮次数：<span class="figure">{{ detail.act2_left_time }}</span>&nbsp;次
+                      可投篮次数：<span class="figure">{{ formatFigure(detail.act2_left_time) }}</span>&nbsp;次
                     </el-col>
                     <el-col :span="14" class="frames ">
                       已获得的积分：<span class="figure">{{ detail.act2_reword_point }}</span>&nbsp;/&nbsp;100积分
@@ -262,7 +260,7 @@
                   </el-row>
                 </el-col>
                 <el-col :span="24" class="marginTop40">
-                  <el-checkbox v-model="checkedTl" @change="checkedTlChange">跳过开奖动画</el-checkbox>
+                  <el-checkbox v-model="detail.skip_animei" @change="checkedCcChange">跳过开奖动画</el-checkbox>
                 </el-col>
               </el-col>
             </el-row>
@@ -283,7 +281,7 @@
                 <el-col :span="24">
                   <el-row type="flex" justify="space-between" class="marginBottom30">
                     <el-col :span="14" class="btn noCursor">
-                      已获得彩金：{{ detail.act3_reword_prize }}元
+                      已获得彩金：{{ formatFigure(detail.act3_reword_prize) }}元
                     </el-col>
                     <el-col :span="8">
                       <div class="btnGray" @click="showRewardRecord('3')">
@@ -296,15 +294,15 @@
                   <el-col :span="24">
                     <el-row type="flex" class="progressText">
                       <el-col :span="12">
-                        真人累计有效盈利：{{ detail.current_zr_win_amount }} 元
+                        真人累计有效盈利：{{ formatFigure(detail.current_zr_win_amount) }} 元
                       </el-col>
                       <el-col :span="12" class="textRight red">
-                        1,520元
+                        2,088元
                       </el-col>
                     </el-row>
                     <el-row type="flex">
                       <el-col :span="24">
-                        <el-progress :stroke-width="14" :percentage="(detail.current_zr_win_amount / 1500) * 100"
+                        <el-progress :stroke-width="14" :percentage="(detail.current_zr_win_amount / 2088) * 100"
                           :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
@@ -312,15 +310,15 @@
                   <el-col :span="24">
                     <el-row type="flex" class="progressText">
                       <el-col :span="12">
-                        棋牌累计有效盈利：{{ detail.current_qp_win_amount }} 元
+                        棋牌累计有效盈利：{{ formatFigure(detail.current_qp_win_amount) }} 元
                       </el-col>
                       <el-col :span="12" class="textRight red">
-                        1,520元
+                        2,088元
                       </el-col>
                     </el-row>
                     <el-row type="flex">
                       <el-col :span="24">
-                        <el-progress :stroke-width="14" :percentage="(detail.current_qp_win_amount / 1500) * 100"
+                        <el-progress :stroke-width="14" :percentage="(detail.current_qp_win_amount / 2088) * 100"
                           :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
@@ -329,7 +327,7 @@
                 <el-col :span="24">
                   <el-row type="flex" class="margin20">
                     <el-col :span="10" class="frames marginRight20">
-                      可拔河次数：<span class="figure">{{ detail.act3_left_time }}</span>&nbsp;次
+                      可拔河次数：<span class="figure">{{ formatFigure(detail.act3_left_time) }}</span>&nbsp;次
                     </el-col>
                     <el-col :span="14" class="frames ">
                       已获得的积分：<span class="figure">{{ detail.act3_reword_point }}</span>&nbsp;/&nbsp;100积分
@@ -355,7 +353,7 @@
                   </el-row>
                 </el-col>
                 <el-col :span="24" class="marginTop40">
-                  <el-checkbox v-model="checkedBh" @change="checkedBhChange">跳过开奖动画</el-checkbox>
+                  <el-checkbox v-model="detail.skip_animei" @change="checkedCcChange">跳过开奖动画</el-checkbox>
                 </el-col>
               </el-col>
             </el-row>
@@ -382,7 +380,7 @@
                     <img src="../assets/image/rank-1.png" v-else-if="detail.total_point < 100" alt="">
                   </el-col>
                   <el-col :span="21">
-                    <div :class="{ 'btn': detail.total_point >= 50, 'btnGray': detail.total_point < 50 }">领取排位赛奖励</div>
+                    <div :class="{ 'btn': detail.total_point >= 50, 'btnGray': detail.total_point < 50||detail.act4_reword_prize }" @click="getRankReward">领取排位赛奖励</div>
                     <div class="rankTips">提示：排位赛奖励请于27号领取</div>
                   </el-col>
                 </el-row>
@@ -423,7 +421,7 @@
                   <el-col :span="21">
                     <el-row type="flex" justify="space-around">
                       <el-col :span="7" class="textCenter marginTop40 checkStyle">
-                        <el-checkbox v-model="checkedCj" @change="checkedCjChange">跳过开奖动画</el-checkbox>
+                        <el-checkbox v-model="detail.skip_animei" @change="checkedCcChange">跳过开奖动画</el-checkbox>
                       </el-col>
                       <el-col :span="15" class="textCenter">
                         <div class="rankTips">※小贴士：抽奖时间为5月20日至5月26日。</div>
@@ -436,16 +434,28 @@
           </div>
         </div>
         <div class="tableData" v-if="activeIndex == 1 || activeIndex == 2 || activeIndex == 3">
-          <el-table :data="tableData" style="width: 100%" :key="activeIndex">
-            <el-table-column prop="name" label="活动条件" align="center"></el-table-column>
-            <el-table-column prop="address" label="活动奖励" align="center"></el-table-column>
-          </el-table>
+          <el-row :gutter="20" class="tableHead">
+            <el-col :span="12">活动条件</el-col>
+            <el-col :span="12">活动奖励</el-col>
+          </el-row>
+          <el-row :gutter="20" class="tableBody" v-if="activeIndex == 1">
+            <el-col :span="12">每累计有效存款1,520元</el-col>
+            <el-col :span="12">随机彩金+1点积分</el-col>
+          </el-row>
+          <el-row :gutter="20" class="tableBody" v-if="activeIndex == 2">
+            <el-col :span="12">每累计有效存款2,880元</el-col>
+            <el-col :span="12">随机彩金+随机积分</el-col>
+          </el-row>
+          <el-row :gutter="20" class="tableBody" v-if="activeIndex == 3">
+            <el-col :span="12">每累计有效存款2,088元</el-col>
+            <el-col :span="12">随机彩金+随机积分</el-col>
+          </el-row>
         </div>
         <div class="tableDataRank" v-if="activeIndex == 4">
           <el-table :data="tableData" border style="width: 100%" :key="activeIndex">
-            <el-table-column prop="name" label="累计积分" align="center">
+            <el-table-column prop="count" label="累计积分" align="center">
             </el-table-column>
-            <el-table-column prop="address" label="排位赛奖励" align="center">
+            <el-table-column prop="reward" label="排位赛奖励" align="center">
             </el-table-column>
           </el-table>
         </div>
@@ -473,56 +483,64 @@
     <el-dialog :visible.sync="dialogVisible" width="100%" :before-close="handleClose" class="rewardIframe"
       :fullscreen="true">
       <img v-show="activityDialogType == 'cc' && elementVisibleCc" src="../assets/image/pb.gif" class="pic-dh-pb" alt="">
-      <img v-show="activityDialogType == 'bh' && elementVisibleBh" src="../assets/image/bh.gif" class="pic-dh-bh" alt="">
-      <img v-show="activityDialogType == 'tl' && elementVisibleTl" src="../assets/image/tl.gif" class="pic-dh-tl" alt="">
-      <img v-show="activityDialogType == 'cj' && elementVisibleCj" src="../assets/image/cj.gif" class="pic-dh-cj" alt="">
+      <img v-show="activityDialogType == 'bh' && elementVisibleCc" src="../assets/image/bh.gif" class="pic-dh-bh" alt="">
+      <img v-show="activityDialogType == 'tl' && elementVisibleCc" src="../assets/image/tl.gif" class="pic-dh-tl" alt="">
+      <img v-show="activityDialogType == 'cj' && elementVisibleCc" src="../assets/image/cj.gif" class="pic-dh-cj" alt="">
       <!-- 冲刺 -->
       <div v-show="activityDialogType == 'cc' && !elementVisibleCc && rewardDetail.length != 0">
         <img src="../assets/image/alert.png" alt="">
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">随机彩金+{{ item.prize }},积分+{{ item.point }}</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{item.prize}}彩金+1点积分</p>
+          </div>
+        </div>
+        <div class="dialogBtn" @click="handleClose">确定</div>
+      </div>
+       <!-- 投篮 -->
+       <div v-show="activityDialogType == 'tl' && !elementVisibleCc && rewardDetail.length != 0">
+        <img src="../assets/image/alert.png" alt="">
+        <div class="dialogContent">
+          <div class="rewardIframeTitle">恭 喜 您 获 得</div>
+          <div class="rewardIframeContent">
+            <p v-for="(item, index) in rewardDetail" :key="index">{{item.prize}}彩金+{{ item.point }}点积分</p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
       </div>
       <!-- 拔河 -->
-      <div v-show="activityDialogType == 'bh' && !elementVisibleBh && rewardDetail.length != 0">
+      <div v-show="activityDialogType == 'bh' && !elementVisibleCc && rewardDetail.length != 0">
         <img src="../assets/image/alert.png" alt="">
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">随机彩金+{{ item.prize }},积分+{{ item.point }}</p>
-          </div>
-        </div>
-        <div class="dialogBtn" @click="handleClose">确定</div>
-      </div>
-      <!-- 投篮 -->
-      <div v-show="activityDialogType == 'tl' && !elementVisibleTl && rewardDetail.length != 0">
-        <img src="../assets/image/alert.png" alt="">
-        <div class="dialogContent">
-          <div class="rewardIframeTitle">恭 喜 您 获 得</div>
-          <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">随机彩金+{{ item.prize }},积分+{{ item.point }}</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{item.prize}}彩金+{{ item.point }}点积分</p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
       </div>
       <!-- 抽奖 -->
-      <div v-show="activityDialogType == 'cj' && !elementVisibleCj && rewardDetail.length != 0">
+      <div v-show="activityDialogType == 'cj' && !elementVisibleCc && rewardDetail.length != 0">
         <img src="../assets/image/alert.png" alt="">
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">随机彩金+{{ item.prize }}</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{item.prize}}彩金</p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
       </div>
+      <div v-show="!elementVisibleCc && rewardDetail.length == 0&&rewardTipsMsg" class="rewardZero">
+        <i class="el-icon-close errorIcon" @click="handleClose"></i>
+        <div>提示</div>
+        <div class="rewardContent">
+          {{ rewardTipsMsg }}
+        </div>
+        <div class="rewardBtn"  @click="handleClose">确定</div>
+      </div>
     </el-dialog>
     <!-- 记录弹框 -->
-    <el-dialog :visible.sync="dialogVisibleRecord" width="1000" :before-close="handleCloseRecord" class="rewardRecord">
+    <el-dialog :visible.sync="dialogVisibleRecord" width="1000" :center="true" :before-close="handleCloseRecord" class="rewardRecord">
       <img src="../assets/image/alert-bg.jpg" alt="">
       <div class="recordContent">
         <div class="recordTitle">中奖记录</div>
@@ -546,7 +564,6 @@
             class="paginationEl"
             v-show="recordHistoryListTotal>0"
             @current-change="handleCurrentChange"
-            :current-page.sync="currentPage1" 
             layout="total, prev, pager, next" 
             :page-size="recordHistoryPage.size"
             :total="recordHistoryListTotal">
@@ -554,16 +571,42 @@
         </div>
       </div>
     </el-dialog>
+    <!--提示弹框 -->
+    <el-dialog :title="'提示'" :visible.sync="dialogTips" width="400px"  :before-close="handleCloseMsg"  class="tipsDialog">
+      <div class="tipsContent">
+        <div>{{ dialogTipsMsg }}</div>
+      </div>
+      <div class="rewardBtn"  @click="handleCloseMsg">确定</div>
+    </el-dialog>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import { getActivityIndex, getPrize, recordHistory, getPrizeThird } from '@/api'
+import { getActivityIndex, getPrize, recordHistory, getPrizeThird,skipAnimei} from '@/api'
 export default {
   data() {
     return {
       checked: false,
-      tableData: [],
+      tableData: [{
+        count:'300分',
+        reward:'冠军神秘奖励'
+      },
+      {
+        count:'≥200分',
+        reward:'亚军神秘奖励'
+      },
+      {
+        count:'≥150分',
+        reward:'季军神秘奖励'
+      },
+      {
+        count:'≥100分',
+        reward:'殿军神秘奖励'
+      },
+      {
+        count:'≥50分',
+        reward:'参赛神秘奖励'
+      }],
       recordHistoryList: [],
       recordHistoryListTotal: 0,
       recordHistoryPage:{
@@ -573,10 +616,7 @@ export default {
       activeIndex: '1',
       dialogVisible: false,
       dialogVisibleRecord: false,
-      elementVisibleCj: false,
       elementVisibleCc: true,
-      elementVisibleTl: false,
-      elementVisibleBh: false,
       checkedCj: false,
       checkedCc: false,
       checkedTl: false,
@@ -600,9 +640,13 @@ export default {
         act3_left_time: 10,
         act4_reword_prize: '100',//主题4
         act4_left_time: '20',
-        total_point: '200'
+        total_point: '200',
+        skip_animei:false
       },
-      rewardDetail: []
+      rewardDetail: [],
+      dialogTips:false,
+      dialogTipsMsg:'',
+      rewardTipsMsg:''
     }
   },
   computed: {
@@ -615,9 +659,14 @@ export default {
     getList() {
       getActivityIndex().then((res) => {
         if (res.code != 200) {
-          alert(res.message)
+          this.dialogTipsMsg=res.message
+          this.dialogTips=true
         } else {
-          this.detail = res.data
+          this.detail = Object.assign(res.data,{
+            skip_animei:res.data.skip_animei=='1'?true:false
+          }) 
+          console.log(this.detail,'this.detail')
+          this.elementVisibleCc=!this.detail.skip_animei
         }
       })
     },
@@ -626,49 +675,66 @@ export default {
       if (type == 'cc') {
         if (this.detail.act1_left_time != 0 && Number(this.detail.act1_left_time) >= Number(count)) {
           this.dialogVisible = true
-          if (!this.checkedCc) setTimeout(() => {
+          if (!this.detail.skip_animei) setTimeout(() => {
             this.elementVisibleCc = false
-            this.gainWard(1, count)
           }, 3000)
+          this.gainWard(1, count)
         }
       } else if (type == 'tl') {
         if (this.detail.act2_left_time != 0 && Number(this.detail.act2_left_time) >= Number(count)) {
           this.dialogVisible = true
-          if (!this.checkedTl) setTimeout(() => {
-            this.elementVisibleTl = false
-            this.gainWard(2, count)
+          if (!this.detail.skip_animei) setTimeout(() => {
+            this.elementVisibleCc = false
           }, 3000)
+          this.gainWard(2, count)
         }
       } else if (type == 'bh') {
         if (this.detail.act3_left_time != 0 && Number(this.detail.act3_left_time) >= Number(count)) {
           this.dialogVisible = true
-          if (!this.checkedBh) setTimeout(() => {
-            this.elementVisibleBh = false
-            this.gainWard(3, count)
+          if (!this.detail.skip_animei) setTimeout(() => {
+            this.elementVisibleCc = false
           }, 3000)
+          this.gainWard(3, count)
         }
 
       } else if (type == 'cj') {
         if (this.detail.act4_left_time != 0 && Number(this.detail.act4_left_time) >= Number(count)) {
           this.dialogVisible = true
-          if (!this.checkedCj) setTimeout(() => {
-            this.elementVisibleCj = false
-            this.gainWard(4, count)
+          if (!this.detail.skip_animei) setTimeout(() => {
+            this.elementVisibleCc = false
           }, 3000)
+          this.gainWard(4, count)
         }
       }
+    },
+    getRankReward(){
+      getPrize({
+          act: 5,
+          times: 1,
+          test: 1
+        }).then((res) => {
+          if (res.code != 200) {
+            this.dialogTipsMsg=res.message
+            this.dialogTips=true
+          }else{
+            this.dialogTipsMsg='获得彩金：'+res.data[0].prize+'元'
+            this.dialogTips=true
+            this.getList()
+          }
+        })
     },
     gainWard(act, count) {
       if (act != 4) {
         getPrize({
           act: act,
-          times: count,
+          times: 1,
           test: 1
         }).then((res) => {
           if (res.code != 200) {
-            alert(res.message)
+            this.rewardTipsMsg=res.message
+          }else{
+            this.rewardDetail = res.data
           }
-          this.rewardDetail = res.data
         })
       } else {
         getPrizeThird({
@@ -677,40 +743,34 @@ export default {
           test: 1
         }).then((res) => {
           if (res.code != 200) {
-            alert(res.message)
+            this.rewardTipsMsg=res.message
+          }else{
+            this.rewardDetail = res.data
           }
-          this.rewardDetail = res.data
         })
       }
     },
     handleClose() {
       this.dialogVisible = false
-      if (!this.checkedCc) {
+      if (!this.detail.skip_animei) {
         setTimeout(() => this.elementVisibleCc = true, 300)
-      }
-      if (!this.checkedTl) {
-        setTimeout(() => this.elementVisibleTl = true, 300)
-      }
-      if (!this.checkedBh) {
-        setTimeout(() => this.elementVisibleBh = true, 300)
-      }
-      if (!this.checkedCj) {
-        setTimeout(() => this.elementVisibleCj = true, 300)
+      }else{
+        this.elementVisibleCc = false
       }
       this.getList()
     },
     // 抽奖复选框
-    checkedCjChange(val) {
-      this.elementVisibleCj = !val
-    },
-    checkedBhChange(val) {
-      this.elementVisibleBh = !val
-    },
-    checkedTlChange(val) {
-      this.elementVisibleTl = !val
-    },
     checkedCcChange(val) {
-      this.elementVisibleCc = !val
+      skipAnimei({
+        skip_animei:val?'1':'2'
+      }).then((res) => {
+        if (res.code != 200) {
+          this.dialogTipsMsg=res.message
+          this.dialogTips=true
+        } else {
+          this.getList()
+        }
+      })
     },
     // 历史记录
     showRewardRecord(type) {
@@ -718,7 +778,8 @@ export default {
         type: type
       })).then((res) => {
         if (res.code != 200) {
-          alert(res.message)
+          this.dialogTipsMsg=res.message
+          this.dialogTips=true
         } else {
           this.recordHistoryList = res.data.list
           this.recordHistoryListTotal = res.data.total
@@ -740,30 +801,17 @@ export default {
     changaTabs(tabsIndex, type) {
       this.activeIndex = tabsIndex
       this.activityDialogType = type
-      if (tabsIndex == 1 && !this.checkedCc) {
+      if (!this.detail.skip_animei) {
         this.elementVisibleCc = true
-        this.elementVisibleTl = false
-        this.elementVisibleBh = false
-        this.elementVisibleCj = false
       }
-      if (tabsIndex == 2 && !this.checkedTl) {
-        this.elementVisibleTl = true
-        this.elementVisibleCc = false
-        this.elementVisibleBh = false
-        this.elementVisibleCj = false
-      }
-      if (tabsIndex == 3 && !this.checkedBh) {
-        this.elementVisibleBh = true
-        this.elementVisibleTl = false
-        this.elementVisibleCc = false
-        this.elementVisibleCj = false
-      }
-      if (tabsIndex == 4 && !this.checkedCj) {
-        this.elementVisibleCj = true
-        this.elementVisibleCc = false
-        this.elementVisibleTl = false
-        this.elementVisibleBh = false
-      }
+    },
+    handleCloseMsg(){
+      this.dialogTips=false
+      this.dialogTipsMsg=''
+    },
+    formatFigure(query){
+      if(query) return Number(query).toLocaleString()
+     
     }
   },
   watch: {
@@ -774,17 +822,16 @@ export default {
 
 <style lang="stylus" scoped>
 .index {
-  height 2772px
+  height 2930px
   width 100vw
   background  url('../assets/image/bg.jpg')
   background-size 100% 100%
   clearfix()
   font-family MicrosoftYaHei
-  box-sizing content-box
 }
 .main{
   width 1200px
-  margin 920px auto 0
+  margin 960px auto 0
   .activeTitle{
     height 190px
     position relative
@@ -863,7 +910,7 @@ export default {
     }
   }
   .activeTheme{
-    margin-top 15px
+    margin 15px  0 15px 0
     height 122px
     overflow hidden
     >div{
@@ -938,14 +985,24 @@ export default {
     font-size: 16px;
   }
   .tableData{
-    margin 30px 0 50px 0
+    margin 120px  0
+    .tableHead>div{
+      font-family MicrosoftYaHei-Bold
+      font-size 22px
+      color #333333
+      text-align center
+      font-weight bold
+    }
+    .tableBody>div{
+      font-family MicrosoftYaHei
+      font-size 20px
+      color #333333
+      text-align center
+      font-weight 400
+      margin-top 20px
+    }
   }
-  .tableData>>>.el-table,
-  .tableData>>>.el-table tr,
-  .tableData>>>.el-table th.el-table__cell{
-    background transparent
-  }
-  
+
   .tableDataRank {
     margin 40px 0 40px 0
   }
@@ -993,7 +1050,6 @@ export default {
   }
   .tips{
     color black
-    margin 0 0 180px 0
     padding 0 50px 0px 20px
     font-family MicrosoftYaHei-Bold
     .tipsTitle{
@@ -1241,6 +1297,47 @@ export default {
   top calc(50% - 400px)
   left calc(50% - 319px)
 }
+.rewardIframe .rewardZero{
+  width 400px
+  position absolute
+  top calc(50% - 200px)
+  left calc(50% - 200px)
+  background  white
+  color #333
+  padding 20px
+  text-align center
+  border-radius 8px
+  font-size 16px
+  .rewardContent{ 
+    background #FFF3E7 
+    border-radius 8px
+    padding  20px
+    margin 15px 0
+    line-height 40px
+  }
+}
+.errorIcon{
+  position absolute
+  top 10px
+  right 10px
+  cursor pointer
+}
+.rewardBtn{
+  width 100px
+  height 44px
+  line-height 44px
+  background-image linear-gradient(90deg, #FF654C 1%, #F68016 100%)
+  border 1.98px solid rgba(255,255,255,0.26)
+  box-shadow inset 0px 1px 3px 0px rgba(255,255,255,0.93);box-shadow: 0px 2px 4px 0px rgba(253,78,6,0.31)
+  border-radius 33.66px
+  font-family MicrosoftYaHei
+  cursor pointer
+  position relative
+  left 130px
+  color #fff
+  text-align center
+  margin-top 15px
+}
 .pic-dh-cj{
   top calc(50% - 110px)!important
 }
@@ -1270,7 +1367,7 @@ export default {
     font-size 23.76px
     color #FFFFFF
     font-weight 400
-    line-height 40px
+    line-height 28px
   }
 }
 .dialogBtn{
@@ -1293,19 +1390,22 @@ export default {
 }
 .rewardRecord >>>.el-dialog{
   width 700px
-  height 700px
+  height 750px
   box-shadow none
   position relative
 }
 .rewardRecord img{
   width 100%
-  height 620px
+  height 660px
 }
 .paginationEl{
   text-align right
-  padding-top 5px
-  >>>button:disabled,.btn-prev, .btn-next,.el-pager li{
-    background transparent
+  padding-top 10px
+  >>>button:disabled,.btn-prev, .btn-next{
+    background transparent!important
+  }
+  >>>.el-pager li{
+    background transparent!important
   }
 }
 .recordContent{
@@ -1348,6 +1448,24 @@ export default {
 }
 .recordTable>>>.el-table{
   border-radius 8px
+}
+.tipsDialog{
+  >>>.el-dialog__header{
+    text-align center
+  }
+  >>>.el-dialog__body{
+    padding 10px 20px 20px
+  }
+}
+.tipsContent{
+  background #FFF3E7
+  border-radius 8px
+  text-align center
+  padding 20px
+  font-size 16px;
+  color #333333;
+  font-weight 400;
+  line-height 40px
 }
 
 
