@@ -665,7 +665,6 @@ export default {
           this.detail = Object.assign(res.data,{
             skip_animei:res.data.skip_animei=='1'?true:false
           }) 
-          console.log(this.detail,'this.detail')
           this.elementVisibleCc=!this.detail.skip_animei
         }
       })
@@ -1348,6 +1347,10 @@ export default {
 .pic-dh-bh{
   top calc(50% - 210px)!important
   left calc(50% - 319px)!important
+}
+.pic-dh-tl{
+  top calc(50% - 283px)!important
+  left calc(50% - 292px)!important
 }
 .dialogContent{
   width 418px
