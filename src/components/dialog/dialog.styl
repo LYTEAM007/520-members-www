@@ -1,0 +1,54 @@
+@import '~@/assets/css/mixin.styl'
+.dialog-wrap {
+}
+.dialog-cover {
+  background #000
+  opacity 0.7
+  position absolute
+  z-index 999
+  top 0
+  left 0
+  bottom 0
+  right 0
+}
+.dialog-content {
+  position absolute
+  z-index 9999
+  background-size cover
+  line-height 1.6
+  left 50%
+  transform translate3d(-50%, 0, 0)
+}
+.dialog-close {
+  position absolute
+  right -30px
+  top -30px
+  text-align center
+  cursor pointer
+  font-size 50px
+  color #fff
+  width 50px
+  height @width
+  trans()
+  // border 1px solid red
+  display flex
+  align-items center
+  justify-content center
+}
+.dialog-close:hover {
+  opacity 0.9
+  // transform rotate(180deg)
+}
+.close {
+  position absolute
+  right -50px
+  top -50px
+  width 60px
+  height @width
+  background url('./img/close.png')
+  background-size cover
+  cursor pointer
+  &:hover {
+    opacity 0.9
+  }
+}

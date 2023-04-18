@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <iframe width="100%" height="" id="full_frame" src="http://localhost:8888/" frameborder="0"></iframe>
+  <script>
+
+    var iframeEl = document.getElementById('full_frame');
+    var sendMessage = function (scrollTop) {
+      iframeEl.contentWindow.postMessage({ type: 'scroll', scrollTop: scrollTop, }, '*');
+    };
+    window.addEventListener('scroll', function () {
+      var scrollTop = window.scrollY;
+      sendMessage(scrollTop);
+    })
+
+    //Scripts are provided by 全站 for dynamic iframe height
+    window.addEventListener('message', function (e) {
+      if (e.data.type === 'activity') {
+        let height = e.data.activity_document_height
+        document.getElementById('full_frame').height = height
+      }
+    }, false);
+    window.addEventListener('message', function (e) {
+      if (e.data.type === 'activity') {
+        let height = e.data.activity_document_height
+        document.getElementById('full_frame').height = height
+      }
+    }, false)
+
+
+  </script>
+</body>
+
+</html>
