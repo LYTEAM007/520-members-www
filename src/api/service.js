@@ -32,7 +32,7 @@ _axios.interceptors.response.use((response) => {
 });
 
 export const service = (type, url, data) => {
-  alert(type, url,configHeader.baseURL)
+  alert(configHeader.baseURL)
   let reqData = {
     method: type,
     url: configHeader.baseURL + url,
