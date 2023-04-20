@@ -17,8 +17,8 @@ export default {
     }
   },
   created() {
+    alert(process.env.VUE_APP_TITLE)
     if (process.env.VUE_APP_TITLE === 'PROD') {
-      alert('PROD')
       this.isShowComponents = false
     }
   },

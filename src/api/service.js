@@ -31,10 +31,9 @@ _axios.interceptors.response.use((response) => {
 });
 
 export const service = (type, url, data) => {
-  alert(process.env.VUE_APP_BASE_API)
   let reqData = {
     method: type,
-    url:process.env.VUE_APP_BASE_API + url,
+    url: url,
     timeout: 0,
     headers: {},
   }
