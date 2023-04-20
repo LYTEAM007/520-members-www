@@ -33,7 +33,7 @@ _axios.interceptors.response.use((response) => {
 export const service = (type, url, data) => {
   let reqData = {
     method: type,
-    url: url,
+    url: process.env.VUE_APP_BASE_API+url,
     timeout: 0,
     headers: {},
   }
