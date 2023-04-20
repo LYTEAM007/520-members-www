@@ -49,28 +49,28 @@
           <div @click="changaTabs(1, 'cc')">
             <img class="activeThemeIcon" src="../assets/image/pb.png" alt="">
             <img v-show="activeIndex == 1" class="activeThemeIcon" src="../assets/image/pb-active.png" alt="">
-            <div :class="{'activeThemeTitle':activeIndex != 1,'activeThemeTitleActive':activeIndex == 1}">
+            <div :class="{ 'activeThemeTitle': activeIndex != 1, 'activeThemeTitleActive': activeIndex == 1 }">
               极限奔跑吧
             </div>
           </div>
           <div @click="changaTabs(2, 'tl')">
             <img class="activeThemeIcon" src="../assets/image/lq.png" alt="">
             <img class="activeThemeIcon" v-show="activeIndex == 2" src="../assets/image/lq-active.png" alt="">
-            <div :class="{'activeThemeTitle':activeIndex != 2,'activeThemeTitleActive':activeIndex == 2}">
+            <div :class="{ 'activeThemeTitle': activeIndex != 2, 'activeThemeTitleActive': activeIndex == 2 }">
               竞技篮球火
             </div>
           </div>
           <div @click="changaTabs(3, 'bh')">
             <img class="activeThemeIcon" src="../assets/image/bh.png" alt="">
             <img class="activeThemeIcon" v-show="activeIndex == 3" src="../assets/image/bh-active.png" alt="">
-            <div :class="{'activeThemeTitle':activeIndex != 3,'activeThemeTitleActive':activeIndex == 3}">
+            <div :class="{ 'activeThemeTitle': activeIndex != 3, 'activeThemeTitleActive': activeIndex == 3 }">
               力拔迎胜利
             </div>
           </div>
           <div @click="changaTabs(4, 'cj')">
             <img class="activeThemeIcon" src="../assets/image/pw.png" alt="">
             <img class="activeThemeIcon" v-show="activeIndex == 4" src="../assets/image/pw-active.png" alt="">
-            <div :class="{'activeThemeTitle':activeIndex != 4,'activeThemeTitleActive':activeIndex == 4}">
+            <div :class="{ 'activeThemeTitle': activeIndex != 4, 'activeThemeTitleActive': activeIndex == 4 }">
               排位赛好礼
             </div>
           </div>
@@ -99,7 +99,7 @@
                     <el-col :span="14" class="btn noCursor">
                       已获得彩金：{{ formatFigure(detail.act1_reword_prize) }}&nbsp;元
                     </el-col>
-                    <el-col :span="8"  class="textRight">
+                    <el-col :span="8" class="textRight">
                       <div class="btnGray" @click="showRewardRecord('1')">
                         中奖记录
                       </div>
@@ -188,12 +188,12 @@
                         体育累计有效投注：{{ formatFigure(detail.current_ty_bet_amount) }}&nbsp;元
                       </el-col>
                       <el-col :span="12" class="textRight red">
-                        2,880&nbsp;元
+                        2,888&nbsp;元
                       </el-col>
                     </el-row>
                     <el-row type="flex">
                       <el-col :span="24">
-                        <el-progress :stroke-width="14" :percentage="(detail.current_ty_bet_amount / 2880) * 100"
+                        <el-progress :stroke-width="14" :percentage="(detail.current_ty_bet_amount / 2888) * 100"
                           :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
@@ -204,12 +204,12 @@
                         电竞累计有效投注：{{ formatFigure(detail.current_dj_bet_amount) }}&nbsp;元
                       </el-col>
                       <el-col :span="12" class="textRight red">
-                        2,880&nbsp;元
+                        2,888&nbsp;元
                       </el-col>
                     </el-row>
                     <el-row type="flex">
                       <el-col :span="24">
-                        <el-progress :stroke-width="14" :percentage="(detail.current_dj_bet_amount / 2880) * 100"
+                        <el-progress :stroke-width="14" :percentage="(detail.current_dj_bet_amount / 2888) * 100"
                           :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
@@ -220,12 +220,12 @@
                         电子累计有效投注：{{ formatFigure(detail.current_dz_bet_amount) }}&nbsp;元
                       </el-col>
                       <el-col :span="12" class="textRight red">
-                        2,880&nbsp;元
+                        2,888&nbsp;元
                       </el-col>
                     </el-row>
                     <el-row type="flex">
                       <el-col :span="24">
-                        <el-progress :stroke-width="14" :percentage="(detail.current_dz_bet_amount / 2880) * 100"
+                        <el-progress :stroke-width="14" :percentage="(detail.current_dz_bet_amount / 2888) * 100"
                           :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
@@ -283,7 +283,7 @@
                     <el-col :span="14" class="btn noCursor">
                       已获得彩金：{{ formatFigure(detail.act3_reword_prize) }}&nbsp;元
                     </el-col>
-                    <el-col :span="8"  class="textRight">
+                    <el-col :span="8" class="textRight">
                       <div class="btnGray" @click="showRewardRecord('3')">
                         中奖记录
                       </div>
@@ -380,7 +380,9 @@
                     <img src="../assets/image/rank-1.png" v-else-if="detail.total_point < 100" alt="">
                   </el-col>
                   <el-col :span="21">
-                    <div :class="{ 'btn': detail.total_point >= 50, 'btnGray': detail.total_point < 50||detail.act4_reword_prize }" @click="getRankReward">领取排位赛奖励</div>
+                    <div
+                      :class="{ 'btn': detail.total_point >= 50, 'btnGray': detail.total_point < 50 || detail.act4_reword_prize }"
+                      @click="getRankReward">领取排位赛奖励</div>
                     <div class="rankTips">提示：排位赛奖励请于27号领取</div>
                   </el-col>
                 </el-row>
@@ -492,18 +494,18 @@
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">{{item.prize}}彩金+1点积分</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金+1点积分</p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
       </div>
-       <!-- 投篮 -->
-       <div v-show="activityDialogType == 'tl' && !elementVisibleCc && rewardDetail.length != 0">
+      <!-- 投篮 -->
+      <div v-show="activityDialogType == 'tl' && !elementVisibleCc && rewardDetail.length != 0">
         <img src="../assets/image/alert.png" alt="">
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">{{item.prize}}彩金+{{ item.point }}点积分</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金+{{ item.point }}点积分</p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
@@ -514,7 +516,7 @@
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">{{item.prize}}彩金+{{ item.point }}点积分</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金+{{ item.point }}点积分</p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
@@ -525,22 +527,23 @@
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">{{item.prize}}彩金</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金</p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
       </div>
-      <div v-show="!elementVisibleCc && rewardDetail.length == 0&&rewardTipsMsg" class="rewardZero">
+      <div v-show="!elementVisibleCc && rewardDetail.length == 0 && rewardTipsMsg" class="rewardZero">
         <i class="el-icon-close errorIcon" @click="handleClose"></i>
         <div>提示</div>
         <div class="rewardContent">
           {{ rewardTipsMsg }}
         </div>
-        <div class="rewardBtn"  @click="handleClose">确定</div>
+        <div class="rewardBtn" @click="handleClose">确定</div>
       </div>
     </el-dialog>
     <!-- 记录弹框 -->
-    <el-dialog :visible.sync="dialogVisibleRecord" width="1000" :center="true" :before-close="handleCloseRecord" class="rewardRecord">
+    <el-dialog :visible.sync="dialogVisibleRecord" width="1000" :center="true" :before-close="handleCloseRecord"
+      class="rewardRecord">
       <img src="../assets/image/alert-bg.jpg" alt="">
       <div class="recordContent">
         <div class="recordTitle">中奖记录</div>
@@ -560,58 +563,53 @@
             <el-table-column prop="prize" label="活动奖品内容" align="center">
             </el-table-column>
           </el-table>
-          <el-pagination 
-            class="paginationEl"
-            v-show="recordHistoryListTotal>0"
-            @current-change="handleCurrentChange"
-            layout="total, prev, pager, next" 
-            :page-size="recordHistoryPage.size"
-            :total="recordHistoryListTotal">
+          <el-pagination class="paginationEl" v-show="recordHistoryListTotal > 0" @current-change="handleCurrentChange"
+            layout="total, prev, pager, next" :page-size="recordHistoryPage.size" :total="recordHistoryListTotal">
           </el-pagination>
         </div>
       </div>
     </el-dialog>
     <!--提示弹框 -->
-    <el-dialog :title="'提示'" :visible.sync="dialogTips" width="400px"  :before-close="handleCloseMsg"  class="tipsDialog">
+    <el-dialog :title="'提示'" :visible.sync="dialogTips" width="400px" :before-close="handleCloseMsg" class="tipsDialog">
       <div class="tipsContent">
         <div>{{ dialogTipsMsg }}</div>
       </div>
-      <div class="rewardBtn"  @click="handleCloseMsg">确定</div>
+      <div class="rewardBtn" @click="handleCloseMsg">确定</div>
     </el-dialog>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import { getActivityIndex, getPrize, recordHistory, getPrizeThird,skipAnimei} from '@/api'
+import { getActivityIndex, getPrize, recordHistory, getPrizeThird, skipAnimei } from '@/api'
 export default {
   data() {
     return {
       checked: false,
       tableData: [{
-        count:'300分',
-        reward:'冠军神秘奖励'
+        count: '300分',
+        reward: '冠军神秘奖励'
       },
       {
-        count:'≥200分',
-        reward:'亚军神秘奖励'
+        count: '≥200分',
+        reward: '亚军神秘奖励'
       },
       {
-        count:'≥150分',
-        reward:'季军神秘奖励'
+        count: '≥150分',
+        reward: '季军神秘奖励'
       },
       {
-        count:'≥100分',
-        reward:'殿军神秘奖励'
+        count: '≥100分',
+        reward: '殿军神秘奖励'
       },
       {
-        count:'≥50分',
-        reward:'参赛神秘奖励'
+        count: '≥50分',
+        reward: '参赛神秘奖励'
       }],
       recordHistoryList: [],
       recordHistoryListTotal: 0,
-      recordHistoryPage:{
-        page:1,
-        size:10
+      recordHistoryPage: {
+        page: 1,
+        size: 10
       },
       activeIndex: '1',
       dialogVisible: false,
@@ -641,12 +639,12 @@ export default {
         act4_reword_prize: '0',//主题4
         act4_left_time: '0',
         total_point: '0',
-        skip_animei:false
+        skip_animei: false
       },
       rewardDetail: [],
-      dialogTips:false,
-      dialogTipsMsg:'',
-      rewardTipsMsg:''
+      dialogTips: false,
+      dialogTipsMsg: '',
+      rewardTipsMsg: ''
     }
   },
   computed: {
@@ -659,13 +657,13 @@ export default {
     getList() {
       getActivityIndex().then((res) => {
         if (res.code != 200) {
-          this.dialogTipsMsg=res.message
-          this.dialogTips=true
+          this.dialogTipsMsg = res.message
+          this.dialogTips = true
         } else {
-          this.detail = Object.assign(res.data,{
-            skip_animei:res.data.skip_animei=='1'?true:false
-          }) 
-          this.elementVisibleCc=!this.detail.skip_animei
+          this.detail = Object.assign(res.data, {
+            skip_animei: res.data.skip_animei == '1' ? true : false
+          })
+          this.elementVisibleCc = !this.detail.skip_animei
         }
       })
     },
@@ -678,9 +676,9 @@ export default {
             this.elementVisibleCc = false
           }, 3000)
           this.gainWard(1, count)
-        }else{
-          this.dialogTipsMsg='冲刺次数不足！'
-          this.dialogTips=true
+        } else {
+          this.dialogTipsMsg = '冲刺次数不足！'
+          this.dialogTips = true
         }
       } else if (type == 'tl') {
         if (this.detail.act2_left_time != 0 && Number(this.detail.act2_left_time) >= Number(count)) {
@@ -689,9 +687,9 @@ export default {
             this.elementVisibleCc = false
           }, 3000)
           this.gainWard(2, count)
-        }else{
-          this.dialogTipsMsg='投篮次数不足！'
-          this.dialogTips=true
+        } else {
+          this.dialogTipsMsg = '投篮次数不足！'
+          this.dialogTips = true
         }
       } else if (type == 'bh') {
         if (this.detail.act3_left_time != 0 && Number(this.detail.act3_left_time) >= Number(count)) {
@@ -700,9 +698,9 @@ export default {
             this.elementVisibleCc = false
           }, 3000)
           this.gainWard(3, count)
-        }else{
-          this.dialogTipsMsg='拔河次数不足！'
-          this.dialogTips=true
+        } else {
+          this.dialogTipsMsg = '拔河次数不足！'
+          this.dialogTips = true
         }
 
       } else if (type == 'cj') {
@@ -712,27 +710,27 @@ export default {
             this.elementVisibleCc = false
           }, 3000)
           this.gainWard(4, count)
-        }else{
-          this.dialogTipsMsg='抽奖次数不足！'
-          this.dialogTips=true
+        } else {
+          this.dialogTipsMsg = '抽奖次数不足！'
+          this.dialogTips = true
         }
       }
     },
-    getRankReward(){
+    getRankReward() {
       getPrize({
-          act: 5,
-          times: 1,
-          test: 1
-        }).then((res) => {
-          if (res.code != 200) {
-            this.dialogTipsMsg=res.message
-            this.dialogTips=true
-          }else{
-            this.dialogTipsMsg='获得彩金：'+res.data[0].prize+'元'
-            this.dialogTips=true
-            this.getList()
-          }
-        })
+        act: 5,
+        times: 1,
+        test: 1
+      }).then((res) => {
+        if (res.code != 200) {
+          this.dialogTipsMsg = res.message
+          this.dialogTips = true
+        } else {
+          this.dialogTipsMsg = '获得彩金：' + res.data[0].prize + '元'
+          this.dialogTips = true
+          this.getList()
+        }
+      })
     },
     gainWard(act, count) {
       if (act != 4) {
@@ -742,8 +740,8 @@ export default {
           test: 1
         }).then((res) => {
           if (res.code != 200) {
-            this.rewardTipsMsg=res.message
-          }else{
+            this.rewardTipsMsg = res.message
+          } else {
             this.rewardDetail = res.data
           }
         })
@@ -754,8 +752,8 @@ export default {
           test: 1
         }).then((res) => {
           if (res.code != 200) {
-            this.rewardTipsMsg=res.message
-          }else{
+            this.rewardTipsMsg = res.message
+          } else {
             this.rewardDetail = res.data
           }
         })
@@ -765,7 +763,7 @@ export default {
       this.dialogVisible = false
       if (!this.detail.skip_animei) {
         setTimeout(() => this.elementVisibleCc = true, 300)
-      }else{
+      } else {
         this.elementVisibleCc = false
       }
       this.getList()
@@ -773,11 +771,11 @@ export default {
     // 抽奖复选框
     checkedCcChange(val) {
       skipAnimei({
-        skip_animei:val?'1':'2'
+        skip_animei: val ? '1' : '2'
       }).then((res) => {
         if (res.code != 200) {
-          this.dialogTipsMsg=res.message
-          this.dialogTips=true
+          this.dialogTipsMsg = res.message
+          this.dialogTips = true
         } else {
           this.getList()
         }
@@ -785,12 +783,12 @@ export default {
     },
     // 历史记录
     showRewardRecord(type) {
-      recordHistory(Object.assign(this.recordHistoryPage,{
+      recordHistory(Object.assign(this.recordHistoryPage, {
         type: type
       })).then((res) => {
         if (res.code != 200) {
-          this.dialogTipsMsg=res.message
-          this.dialogTips=true
+          this.dialogTipsMsg = res.message
+          this.dialogTips = true
         } else {
           this.recordHistoryList = res.data.list
           this.recordHistoryListTotal = res.data.total
@@ -799,14 +797,14 @@ export default {
       this.dialogVisibleRecord = true
     },
     handleCurrentChange(val) {
-       this.recordHistoryPage.page=val
-       this.showRewardRecord(this.activeIndex)
+      this.recordHistoryPage.page = val
+      this.showRewardRecord(this.activeIndex)
     },
     handleCloseRecord() {
       this.dialogVisibleRecord = false
-      this.recordHistoryPage={
-        page:1,
-        size:10
+      this.recordHistoryPage = {
+        page: 1,
+        size: 10
       }
     },
     changaTabs(tabsIndex, type) {
@@ -816,17 +814,19 @@ export default {
         this.elementVisibleCc = true
       }
     },
-    handleCloseMsg(){
-      this.dialogTips=false
-      this.dialogTipsMsg=''
+    handleCloseMsg() {
+      this.dialogTips = false
+      this.dialogTipsMsg = ''
     },
-    formatFigure(query){
-      if(query) {
-        return Number(query).toLocaleString()
-      }else{
-        return 0
+    formatFigure(num) {
+      var reg = /\d{1,3}(?=(\d{3})+$)/g;
+      if (num && num.toString().indexOf('.') == -1) {
+        return (num + '').replace(reg, '$&,');
+      } else {
+        return num.toString().replace(/(\d)(?=(\d{3})+\.)/g, function ($0, $1) {
+          return $1 + ",";
+        });
       }
-     
     }
   },
   watch: {
