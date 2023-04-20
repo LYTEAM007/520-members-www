@@ -3,6 +3,7 @@ import axios from "axios"
 const configHeader = {
   timeout: 0,
   headers: {},
+  baseURL:process.env.VUE_APP_BASE_API
 }
 const _axios = axios.create(configHeader)
 
@@ -31,10 +32,10 @@ _axios.interceptors.response.use((response) => {
 });
 
 export const service = (type, url, data) => {
-
+  alert(type, url,configHeader.baseURL)
   let reqData = {
     method: type,
-    url: process.env.VUE_APP_BASE_API + url,
+    url: configHeader.baseURL + url,
     timeout: 0,
     headers: {},
   }
