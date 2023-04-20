@@ -49,28 +49,28 @@
           <div @click="changaTabs(1, 'cc')">
             <img class="activeThemeIcon" src="../assets/image/pb.png" alt="">
             <img v-show="activeIndex == 1" class="activeThemeIcon" src="../assets/image/pb-active.png" alt="">
-            <div class="activeThemeTitle">
+            <div :class="{ 'activeThemeTitle': activeIndex != 1, 'activeThemeTitleActive': activeIndex == 1 }">
               极限奔跑吧
             </div>
           </div>
           <div @click="changaTabs(2, 'tl')">
             <img class="activeThemeIcon" src="../assets/image/lq.png" alt="">
             <img class="activeThemeIcon" v-show="activeIndex == 2" src="../assets/image/lq-active.png" alt="">
-            <div class="activeThemeTitle">
+            <div :class="{ 'activeThemeTitle': activeIndex != 2, 'activeThemeTitleActive': activeIndex == 2 }">
               竞技篮球火
             </div>
           </div>
           <div @click="changaTabs(3, 'bh')">
             <img class="activeThemeIcon" src="../assets/image/bh.png" alt="">
             <img class="activeThemeIcon" v-show="activeIndex == 3" src="../assets/image/bh-active.png" alt="">
-            <div class="activeThemeTitle">
+            <div :class="{ 'activeThemeTitle': activeIndex != 3, 'activeThemeTitleActive': activeIndex == 3 }">
               力拔迎胜利
             </div>
           </div>
           <div @click="changaTabs(4, 'cj')">
             <img class="activeThemeIcon" src="../assets/image/pw.png" alt="">
             <img class="activeThemeIcon" v-show="activeIndex == 4" src="../assets/image/pw-active.png" alt="">
-            <div class="activeThemeTitle">
+            <div :class="{ 'activeThemeTitle': activeIndex != 4, 'activeThemeTitleActive': activeIndex == 4 }">
               排位赛好礼
             </div>
           </div>
@@ -84,7 +84,7 @@
           <!--极限奔跑吧 -->
           <div class="activeThemeContentItem" v-show="activeIndex == 1">
             <div>
-              会员参与【极限奔跑吧 / 竞技篮球火 / 力拔迎胜利】主题所累计积分，每3积分即可抽奖一次获得随机彩金。且可依照最高等级累计积分并于5月27日额外获得一份排位赛神秘彩金奖励，请会员及时点击领取，逾期默认为放弃。
+              会员于05月20日至05月25日，每累计有效存款1,520元，即可在赛跑活动中获得一次冲刺机会，每次冲刺即可获得一份随机彩金及1点积分。
             </div>
             <div class="activeThemeContentDesc">
               每项赛事最高可获得100点积分，且积分需在5月26日 23:59:59获取，逾期视为放弃。活动中所获随机彩金可持续累计。
@@ -97,9 +97,9 @@
                 <el-col :span="24">
                   <el-row type="flex" justify="space-between" class="marginBottom30">
                     <el-col :span="14" class="btn noCursor">
-                      已获得彩金：{{ formatFigure(detail.act1_reword_prize) }}元
+                      已获得彩金：{{ formatFigure(detail.act1_reword_prize) }}&nbsp;元
                     </el-col>
-                    <el-col :span="8">
+                    <el-col :span="8" class="textRight">
                       <div class="btnGray" @click="showRewardRecord('1')">
                         中奖记录
                       </div>
@@ -110,10 +110,10 @@
                   <el-col :span="24">
                     <el-row type="flex" class="progressText">
                       <el-col :span="12">
-                        累计有效存款：{{ formatFigure(detail.current_deposit_amount) }}元
+                        累计有效存款：{{ formatFigure(detail.current_deposit_amount) }}&nbsp;元
                       </el-col>
                       <el-col :span="12" class="textRight red">
-                        1,520元
+                        1,520&nbsp;元
                       </el-col>
                     </el-row>
                     <el-row type="flex">
@@ -130,7 +130,7 @@
                       可冲刺次数：<span class="figure">{{ formatFigure(detail.act1_left_time) }}</span>&nbsp;次
                     </el-col>
                     <el-col :span="14" class="frames ">
-                      已获得的积分：<span class="figure">{{ detail.act1_reword_point }}</span>&nbsp;/&nbsp;100积分
+                      已获得的积分：<span class="figure">{{ detail.act1_reword_point }}</span>&nbsp;/&nbsp;100&nbsp;积分
                     </el-col>
                   </el-row>
                 </el-col>
@@ -158,7 +158,7 @@
           <!-- 竞技篮球火 -->
           <div class="activeThemeContentItem" v-show="activeIndex == 2">
             <div>
-              会员参与【极限奔跑吧 / 竞技篮球火 / 力拔迎胜利】主题所累计积分，每3积分即可抽奖一次获得随机彩金。且可依照最高等级累计积分并于5月27日额外获得一份排位赛神秘彩金奖励，请会员及时点击领取，逾期默认为放弃。
+              会员于05月20日至05月25日,于(体育、电竞、电子)任意平台,每累计有效投注2,888元即可获得一次投篮机会,完成投篮可获得随机彩金及随机积分。
             </div>
             <div class="activeThemeContentDesc">
               每项赛事最高可获得100点积分，且积分需在5月26日23:59:59获取，逾期视为放弃。活动中所获随机彩金可持续累计。
@@ -172,9 +172,9 @@
                 <el-col :span="24">
                   <el-row type="flex" justify="space-between" class="marginBottom30">
                     <el-col :span="14" class="btn noCursor">
-                      已获得彩金：{{ formatFigure(detail.act2_reword_prize) }}元
+                      已获得彩金：{{ formatFigure(detail.act2_reword_prize) }}&nbsp;元
                     </el-col>
-                    <el-col :span="8">
+                    <el-col :span="8" class="textRight">
                       <div class="btnGray" @click="showRewardRecord('2')">
                         中奖记录
                       </div>
@@ -185,15 +185,15 @@
                   <el-col :span="24">
                     <el-row type="flex" class="progressText">
                       <el-col :span="12">
-                        体育累计有效投注：{{ formatFigure(detail.current_ty_bet_amount) }} 元
+                        体育累计有效投注：{{ formatFigure(detail.current_ty_bet_amount) }}&nbsp;元
                       </el-col>
                       <el-col :span="12" class="textRight red">
-                        2,880元
+                        2,888&nbsp;元
                       </el-col>
                     </el-row>
                     <el-row type="flex">
                       <el-col :span="24">
-                        <el-progress :stroke-width="14" :percentage="(detail.current_ty_bet_amount / 2880) * 100"
+                        <el-progress :stroke-width="14" :percentage="(detail.current_ty_bet_amount / 2888) * 100"
                           :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
@@ -201,15 +201,15 @@
                   <el-col :span="24">
                     <el-row type="flex" class="progressText">
                       <el-col :span="12">
-                        电竞累计有效投注：{{ formatFigure(detail.current_dj_bet_amount) }} 元
+                        电竞累计有效投注：{{ formatFigure(detail.current_dj_bet_amount) }}&nbsp;元
                       </el-col>
                       <el-col :span="12" class="textRight red">
-                        2,880元
+                        2,888&nbsp;元
                       </el-col>
                     </el-row>
                     <el-row type="flex">
                       <el-col :span="24">
-                        <el-progress :stroke-width="14" :percentage="(detail.current_dj_bet_amount / 2880) * 100"
+                        <el-progress :stroke-width="14" :percentage="(detail.current_dj_bet_amount / 2888) * 100"
                           :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
@@ -217,15 +217,15 @@
                   <el-col :span="24">
                     <el-row type="flex" class="progressText">
                       <el-col :span="12">
-                        电子累计有效投注：{{ formatFigure(detail.current_dz_bet_amount) }}元
+                        电子累计有效投注：{{ formatFigure(detail.current_dz_bet_amount) }}&nbsp;元
                       </el-col>
                       <el-col :span="12" class="textRight red">
-                        2,880元
+                        2,888&nbsp;元
                       </el-col>
                     </el-row>
                     <el-row type="flex">
                       <el-col :span="24">
-                        <el-progress :stroke-width="14" :percentage="(detail.current_dz_bet_amount / 2880) * 100"
+                        <el-progress :stroke-width="14" :percentage="(detail.current_dz_bet_amount / 2888) * 100"
                           :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
@@ -237,7 +237,7 @@
                       可投篮次数：<span class="figure">{{ formatFigure(detail.act2_left_time) }}</span>&nbsp;次
                     </el-col>
                     <el-col :span="14" class="frames ">
-                      已获得的积分：<span class="figure">{{ detail.act2_reword_point }}</span>&nbsp;/&nbsp;100积分
+                      已获得的积分：<span class="figure">{{ detail.act2_reword_point }}</span>&nbsp;/&nbsp;100&nbsp;积分
                     </el-col>
                   </el-row>
                 </el-col>
@@ -268,7 +268,7 @@
           <!-- 力拔迎胜利 -->
           <div class="activeThemeContentItem" v-show="activeIndex == 3">
             <div>
-              会员参与【极限奔跑吧 / 竞技篮球火 / 力拔迎胜利】主题所累计积分，每3积分即可抽奖一次获得随机彩金。且可依照最高等级累计积分并于5月27日额外获得一份排位赛神秘彩金奖励，请会员及时点击领取，逾期默认为放弃。
+              会员于05月20日至05月25日,于(真人、棋牌)任意平台,每累计有效盈利2,088元即可获得一次拔河机会,完成拔河比赛可获得随机彩金及随机积分。
             </div>
             <div class="activeThemeContentDesc">
               每项赛事最高可获得100点积分，且积分需在5月26日23:59:59获取，逾期视为放弃。活动中所获随机彩金可持续累计。
@@ -281,9 +281,9 @@
                 <el-col :span="24">
                   <el-row type="flex" justify="space-between" class="marginBottom30">
                     <el-col :span="14" class="btn noCursor">
-                      已获得彩金：{{ formatFigure(detail.act3_reword_prize) }}元
+                      已获得彩金：{{ formatFigure(detail.act3_reword_prize) }}&nbsp;元
                     </el-col>
-                    <el-col :span="8">
+                    <el-col :span="8" class="textRight">
                       <div class="btnGray" @click="showRewardRecord('3')">
                         中奖记录
                       </div>
@@ -294,10 +294,10 @@
                   <el-col :span="24">
                     <el-row type="flex" class="progressText">
                       <el-col :span="12">
-                        真人累计有效盈利：{{ formatFigure(detail.current_zr_win_amount) }} 元
+                        真人累计有效盈利：{{ formatFigure(detail.current_zr_win_amount) }}&nbsp;元
                       </el-col>
                       <el-col :span="12" class="textRight red">
-                        2,088元
+                        2,088&nbsp;元
                       </el-col>
                     </el-row>
                     <el-row type="flex">
@@ -310,10 +310,10 @@
                   <el-col :span="24">
                     <el-row type="flex" class="progressText">
                       <el-col :span="12">
-                        棋牌累计有效盈利：{{ formatFigure(detail.current_qp_win_amount) }} 元
+                        棋牌累计有效盈利：{{ formatFigure(detail.current_qp_win_amount) }}&nbsp;元
                       </el-col>
                       <el-col :span="12" class="textRight red">
-                        2,088元
+                        2,088&nbsp;元
                       </el-col>
                     </el-row>
                     <el-row type="flex">
@@ -330,7 +330,7 @@
                       可拔河次数：<span class="figure">{{ formatFigure(detail.act3_left_time) }}</span>&nbsp;次
                     </el-col>
                     <el-col :span="14" class="frames ">
-                      已获得的积分：<span class="figure">{{ detail.act3_reword_point }}</span>&nbsp;/&nbsp;100积分
+                      已获得的积分：<span class="figure">{{ detail.act3_reword_point }}</span>&nbsp;/&nbsp;100&nbsp;积分
                     </el-col>
                   </el-row>
                 </el-col>
@@ -361,7 +361,7 @@
           <!-- 排位赛好礼 -->
           <div class="activeThemeContentItem" v-show="activeIndex == 4">
             <div>
-              会员参与【极限奔跑吧 / 竞技篮球火 / 力拔迎胜利】主题所累计积分，每3积分即可抽奖一次获得随机彩金。且可依照最高等级累计积分并于5月27日额外获得一份排位赛神秘彩金奖励，请会员及时点击领取，逾期默认为放弃。
+              会员参与主题一至主题三所累计积分，每3积分即可抽奖一次获得随机彩金。且可依照最高等级累计积分并于05月27日额外获得一份排位神秘彩金奖励，请会员及时点击领取，逾期默认为放弃。
             </div>
             <div class="activeThemeContentDesc">
               每项赛事最高可获得100点积分，且积分需在5月26日23:59:59获取，逾期视为放弃。活动中所获随机彩金可持续累计。
@@ -370,7 +370,7 @@
               <el-col :span="12" class="textCenter sectionRank">
                 <el-row>
                   <el-col :span="21">
-                    <div class="frames noMargin">累计积分：{{ detail.total_point }}积分/300积分</div>
+                    <div class="frames noMargin">累计积分：{{ detail.total_point }}&nbsp;积分/300&nbsp;积分</div>
                   </el-col>
                   <el-col :span="21" class="marginTop15">
                     <img src="../assets/image/rank-5.png" v-if="detail.total_point == 300" alt="">
@@ -380,7 +380,9 @@
                     <img src="../assets/image/rank-1.png" v-else-if="detail.total_point < 100" alt="">
                   </el-col>
                   <el-col :span="21">
-                    <div :class="{ 'btn': detail.total_point >= 50, 'btnGray': detail.total_point < 50||detail.act4_reword_prize }" @click="getRankReward">领取排位赛奖励</div>
+                    <div
+                      :class="{ 'btn': detail.total_point >= 50, 'btnGray': detail.total_point < 50 || detail.act4_reword_prize }"
+                      @click="getRankReward">领取排位赛奖励</div>
                     <div class="rankTips">提示：排位赛奖励请于27号领取</div>
                   </el-col>
                 </el-row>
@@ -388,7 +390,7 @@
               <el-col :span="12" class="sectionRank">
                 <el-row type="flex" justify="space-around">
                   <el-col :span="14" class="frames noMargin">
-                    <div style="text-align:left">可抽奖次数：{{ detail.act4_left_time }} 次</div>
+                    <div style="text-align:left">可抽奖次数：{{ detail.act4_left_time }}&nbsp;次</div>
                   </el-col>
                   <el-col :span="6">
                     <div class="btnGray btnGrayCj" @click="showRewardRecord('4')">
@@ -443,7 +445,7 @@
             <el-col :span="12">随机彩金+1点积分</el-col>
           </el-row>
           <el-row :gutter="20" class="tableBody" v-if="activeIndex == 2">
-            <el-col :span="12">每累计有效存款2,880元</el-col>
+            <el-col :span="12">每累计有效存款2,888元</el-col>
             <el-col :span="12">随机彩金+随机积分</el-col>
           </el-row>
           <el-row :gutter="20" class="tableBody" v-if="activeIndex == 3">
@@ -470,10 +472,10 @@
             2.本优惠所需存款及投注不与其他活动共享，可与反水活动共享。
           </div>
           <div class="tipsItem" style="line-height: 40px;">
-            3.本优惠仅对已结算并产生输赢结果的投注流水进行计算。所有拒绝投注、打平、任何情况出现对押情况的投注（例：于百家乐同时下注庄家及闲家，百家乐当中开和退还本金）及赔率低于（万博体育、新万博体育、新亚洲体育、新万博电竞亚洲盘0.70，欧洲盘1.70）；（欧洲体育、新万博电竞亚洲盘0.50，欧洲盘1.50）或其他对应赔率，串关投注将不予计算。
+            3.本优惠仅对已结算并产生输赢结果的投注流水进行计算。所有拒绝投注、打平、任何情况出现对押情况的投注（例：于百家乐同时下注庄家及闲家，百家乐当中开和退还本金）及赔率低于（万博体育、新万博体育、新亚洲体育、新万博电竞亚洲盘0.70，欧洲盘1.70）；（欧洲体育、万博电竞亚洲盘0.50，欧洲盘1.50）或其他对应赔率，串关投注将不予计算。
           </div>
           <div class="tipsItem">
-            4.本优惠符合的会员需在【活动指定时间】内点击操作，所获彩金系统将自动派发至您的游戏账户，超时既视为放弃该活动奖励。
+            4.本优惠符合的会员需在【活动指定时间】内点击操作，超时既视为放弃该活动奖励。
           </div>
           <div class="tipsItemColor marginTop20">本优惠遵循ManBetX万博【一般优惠规则与条款】。 </div>
         </div>
@@ -492,18 +494,18 @@
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">{{item.prize}}彩金+1点积分</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金+1点积分</p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
       </div>
-       <!-- 投篮 -->
-       <div v-show="activityDialogType == 'tl' && !elementVisibleCc && rewardDetail.length != 0">
+      <!-- 投篮 -->
+      <div v-show="activityDialogType == 'tl' && !elementVisibleCc && rewardDetail.length != 0">
         <img src="../assets/image/alert.png" alt="">
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">{{item.prize}}彩金+{{ item.point }}点积分</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金+{{ item.point }}点积分</p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
@@ -514,7 +516,7 @@
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">{{item.prize}}彩金+{{ item.point }}点积分</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金+{{ item.point }}点积分</p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
@@ -525,22 +527,23 @@
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">{{item.prize}}彩金</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金</p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
       </div>
-      <div v-show="!elementVisibleCc && rewardDetail.length == 0&&rewardTipsMsg" class="rewardZero">
+      <div v-show="!elementVisibleCc && rewardDetail.length == 0 && rewardTipsMsg" class="rewardZero">
         <i class="el-icon-close errorIcon" @click="handleClose"></i>
         <div>提示</div>
         <div class="rewardContent">
           {{ rewardTipsMsg }}
         </div>
-        <div class="rewardBtn"  @click="handleClose">确定</div>
+        <div class="rewardBtn" @click="handleClose">确定</div>
       </div>
     </el-dialog>
     <!-- 记录弹框 -->
-    <el-dialog :visible.sync="dialogVisibleRecord" width="1000" :center="true" :before-close="handleCloseRecord" class="rewardRecord">
+    <el-dialog :visible.sync="dialogVisibleRecord" width="1000" :center="true" :before-close="handleCloseRecord"
+      class="rewardRecord">
       <img src="../assets/image/alert-bg.jpg" alt="">
       <div class="recordContent">
         <div class="recordTitle">中奖记录</div>
@@ -560,58 +563,53 @@
             <el-table-column prop="prize" label="活动奖品内容" align="center">
             </el-table-column>
           </el-table>
-          <el-pagination 
-            class="paginationEl"
-            v-show="recordHistoryListTotal>0"
-            @current-change="handleCurrentChange"
-            layout="total, prev, pager, next" 
-            :page-size="recordHistoryPage.size"
-            :total="recordHistoryListTotal">
+          <el-pagination class="paginationEl" v-show="recordHistoryListTotal > 0" @current-change="handleCurrentChange"
+            layout="total, prev, pager, next" :page-size="recordHistoryPage.size" :total="recordHistoryListTotal">
           </el-pagination>
         </div>
       </div>
     </el-dialog>
     <!--提示弹框 -->
-    <el-dialog :title="'提示'" :visible.sync="dialogTips" width="400px"  :before-close="handleCloseMsg"  class="tipsDialog">
+    <el-dialog :title="'提示'" :visible.sync="dialogTips" width="400px" :before-close="handleCloseMsg" class="tipsDialog">
       <div class="tipsContent">
         <div>{{ dialogTipsMsg }}</div>
       </div>
-      <div class="rewardBtn"  @click="handleCloseMsg">确定</div>
+      <div class="rewardBtn" @click="handleCloseMsg">确定</div>
     </el-dialog>
   </div>
 </template>
 <script>
 import { mapGetters } from 'vuex'
-import { getActivityIndex, getPrize, recordHistory, getPrizeThird,skipAnimei} from '@/api'
+import { getActivityIndex, getPrize, recordHistory, getPrizeThird, skipAnimei } from '@/api'
 export default {
   data() {
     return {
       checked: false,
       tableData: [{
-        count:'300分',
-        reward:'冠军神秘奖励'
+        count: '300分',
+        reward: '冠军神秘奖励'
       },
       {
-        count:'≥200分',
-        reward:'亚军神秘奖励'
+        count: '≥200分',
+        reward: '亚军神秘奖励'
       },
       {
-        count:'≥150分',
-        reward:'季军神秘奖励'
+        count: '≥150分',
+        reward: '季军神秘奖励'
       },
       {
-        count:'≥100分',
-        reward:'殿军神秘奖励'
+        count: '≥100分',
+        reward: '殿军神秘奖励'
       },
       {
-        count:'≥50分',
-        reward:'参赛神秘奖励'
+        count: '≥50分',
+        reward: '参赛神秘奖励'
       }],
       recordHistoryList: [],
       recordHistoryListTotal: 0,
-      recordHistoryPage:{
-        page:1,
-        size:10
+      recordHistoryPage: {
+        page: 1,
+        size: 10
       },
       activeIndex: '1',
       dialogVisible: false,
@@ -623,30 +621,30 @@ export default {
       checkedBh: false,
       activityDialogType: 'cc',
       detail: {
-        act1_reword_prize: '100',//主题1
-        act1_reword_point: '20',//已获得的积分
-        current_deposit_amount: '700',//累计有效存款
+        act1_reword_prize: '0',//主题1
+        act1_reword_point: '0',//已获得的积分
+        current_deposit_amount: '0',//累计有效存款
         act1_left_time: 1,//可冲刺次数
-        act2_reword_prize: '100',//主题2
-        act2_reword_point: '20',
-        current_ty_bet_amount: '100',
-        current_dj_bet_amount: '200',
-        current_dz_bet_amount: '300',
-        act2_left_time: '10',
-        act3_reword_prize: '100',//主题3
-        act3_reword_point: '20',//
-        current_zr_win_amount: '100',
-        current_qp_win_amount: '200',
+        act2_reword_prize: '0',//主题2
+        act2_reword_point: '0',
+        current_ty_bet_amount: '0',
+        current_dj_bet_amount: '0',
+        current_dz_bet_amount: '0',
+        act2_left_time: '0',
+        act3_reword_prize: '0',//主题3
+        act3_reword_point: '0',//
+        current_zr_win_amount: '0',
+        current_qp_win_amount: '0',
         act3_left_time: 10,
-        act4_reword_prize: '100',//主题4
-        act4_left_time: '20',
-        total_point: '200',
-        skip_animei:false
+        act4_reword_prize: '0',//主题4
+        act4_left_time: '0',
+        total_point: '0',
+        skip_animei: false
       },
       rewardDetail: [],
-      dialogTips:false,
-      dialogTipsMsg:'',
-      rewardTipsMsg:''
+      dialogTips: false,
+      dialogTipsMsg: '',
+      rewardTipsMsg: ''
     }
   },
   computed: {
@@ -659,13 +657,13 @@ export default {
     getList() {
       getActivityIndex().then((res) => {
         if (res.code != 200) {
-          this.dialogTipsMsg=res.message
-          this.dialogTips=true
+          this.dialogTipsMsg = res.message
+          this.dialogTips = true
         } else {
-          this.detail = Object.assign(res.data,{
-            skip_animei:res.data.skip_animei=='1'?true:false
-          }) 
-          this.elementVisibleCc=!this.detail.skip_animei
+          this.detail = Object.assign(res.data, {
+            skip_animei: res.data.skip_animei == '1' ? true : false
+          })
+          this.elementVisibleCc = !this.detail.skip_animei
         }
       })
     },
@@ -678,6 +676,9 @@ export default {
             this.elementVisibleCc = false
           }, 3000)
           this.gainWard(1, count)
+        } else {
+          this.dialogTipsMsg = '冲刺次数不足！'
+          this.dialogTips = true
         }
       } else if (type == 'tl') {
         if (this.detail.act2_left_time != 0 && Number(this.detail.act2_left_time) >= Number(count)) {
@@ -686,6 +687,9 @@ export default {
             this.elementVisibleCc = false
           }, 3000)
           this.gainWard(2, count)
+        } else {
+          this.dialogTipsMsg = '投篮次数不足！'
+          this.dialogTips = true
         }
       } else if (type == 'bh') {
         if (this.detail.act3_left_time != 0 && Number(this.detail.act3_left_time) >= Number(count)) {
@@ -694,6 +698,9 @@ export default {
             this.elementVisibleCc = false
           }, 3000)
           this.gainWard(3, count)
+        } else {
+          this.dialogTipsMsg = '拔河次数不足！'
+          this.dialogTips = true
         }
 
       } else if (type == 'cj') {
@@ -703,35 +710,38 @@ export default {
             this.elementVisibleCc = false
           }, 3000)
           this.gainWard(4, count)
+        } else {
+          this.dialogTipsMsg = '抽奖次数不足！'
+          this.dialogTips = true
         }
       }
     },
-    getRankReward(){
+    getRankReward() {
       getPrize({
-          act: 5,
-          times: 1,
-          test: 1
-        }).then((res) => {
-          if (res.code != 200) {
-            this.dialogTipsMsg=res.message
-            this.dialogTips=true
-          }else{
-            this.dialogTipsMsg='获得彩金：'+res.data[0].prize+'元'
-            this.dialogTips=true
-            this.getList()
-          }
-        })
+        act: 5,
+        times: 1,
+        test: 1
+      }).then((res) => {
+        if (res.code != 200) {
+          this.dialogTipsMsg = res.message
+          this.dialogTips = true
+        } else {
+          this.dialogTipsMsg = '获得彩金：' + res.data[0].prize + '元'
+          this.dialogTips = true
+          this.getList()
+        }
+      })
     },
     gainWard(act, count) {
       if (act != 4) {
         getPrize({
           act: act,
-          times: 1,
+          times: count,
           test: 1
         }).then((res) => {
           if (res.code != 200) {
-            this.rewardTipsMsg=res.message
-          }else{
+            this.rewardTipsMsg = res.message
+          } else {
             this.rewardDetail = res.data
           }
         })
@@ -742,8 +752,8 @@ export default {
           test: 1
         }).then((res) => {
           if (res.code != 200) {
-            this.rewardTipsMsg=res.message
-          }else{
+            this.rewardTipsMsg = res.message
+          } else {
             this.rewardDetail = res.data
           }
         })
@@ -753,7 +763,7 @@ export default {
       this.dialogVisible = false
       if (!this.detail.skip_animei) {
         setTimeout(() => this.elementVisibleCc = true, 300)
-      }else{
+      } else {
         this.elementVisibleCc = false
       }
       this.getList()
@@ -761,11 +771,11 @@ export default {
     // 抽奖复选框
     checkedCcChange(val) {
       skipAnimei({
-        skip_animei:val?'1':'2'
+        skip_animei: val ? '1' : '2'
       }).then((res) => {
         if (res.code != 200) {
-          this.dialogTipsMsg=res.message
-          this.dialogTips=true
+          this.dialogTipsMsg = res.message
+          this.dialogTips = true
         } else {
           this.getList()
         }
@@ -773,12 +783,12 @@ export default {
     },
     // 历史记录
     showRewardRecord(type) {
-      recordHistory(Object.assign(this.recordHistoryPage,{
+      recordHistory(Object.assign(this.recordHistoryPage, {
         type: type
       })).then((res) => {
         if (res.code != 200) {
-          this.dialogTipsMsg=res.message
-          this.dialogTips=true
+          this.dialogTipsMsg = res.message
+          this.dialogTips = true
         } else {
           this.recordHistoryList = res.data.list
           this.recordHistoryListTotal = res.data.total
@@ -787,14 +797,14 @@ export default {
       this.dialogVisibleRecord = true
     },
     handleCurrentChange(val) {
-       this.recordHistoryPage.page=val
-       this.showRewardRecord(this.activeIndex)
+      this.recordHistoryPage.page = val
+      this.showRewardRecord(this.activeIndex)
     },
     handleCloseRecord() {
       this.dialogVisibleRecord = false
-      this.recordHistoryPage={
-        page:1,
-        size:10
+      this.recordHistoryPage = {
+        page: 1,
+        size: 10
       }
     },
     changaTabs(tabsIndex, type) {
@@ -804,13 +814,19 @@ export default {
         this.elementVisibleCc = true
       }
     },
-    handleCloseMsg(){
-      this.dialogTips=false
-      this.dialogTipsMsg=''
+    handleCloseMsg() {
+      this.dialogTips = false
+      this.dialogTipsMsg = ''
     },
-    formatFigure(query){
-      if(query) return Number(query).toLocaleString()
-     
+    formatFigure(num) {
+      var reg = /\d{1,3}(?=(\d{3})+$)/g;
+      if (num && num.toString().indexOf('.') == -1) {
+        return (num + '').replace(reg, '$&,');
+      } else {
+        return num.toString().replace(/(\d)(?=(\d{3})+\.)/g, function ($0, $1) {
+          return $1 + ",";
+        });
+      }
     }
   },
   watch: {
@@ -932,7 +948,16 @@ export default {
         font-size 32px
         font-weight bold
         margin 10px 0
-        color: #333333;
+        color #333333
+        position relative
+        top 25px
+        left 45px
+      }
+      .activeThemeTitleActive{
+        font-size 32px
+        font-weight bold
+        margin 10px 0
+        color white
         position relative
         top 25px
         left 45px
@@ -966,7 +991,7 @@ export default {
         color #333333
         text-align left
         font-weight 400
-        padding 0px 10px
+        padding 0px 5px
         line-height 30px
       }
       >div:nth-child(2){
@@ -974,7 +999,7 @@ export default {
         color #FD4E06
         text-align left
         font-weight 400
-        padding-left 8px
+        padding-left 5px
       }
     }
   }
@@ -1270,6 +1295,9 @@ export default {
   }
   .textCenter{
     text-align center
+  }
+  .textRight{
+    text-align right
   }
   .noMargin{
     margin 0
