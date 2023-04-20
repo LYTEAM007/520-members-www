@@ -2,8 +2,7 @@ import { getUrlParams } from 'common/js/util'
 import axios from "axios"
 const configHeader = {
   timeout: 0,
-  headers: {},
-  baseURL:process.env.VUE_APP_BASE_API
+  headers: {}
 }
 const _axios = axios.create(configHeader)
 
@@ -32,10 +31,10 @@ _axios.interceptors.response.use((response) => {
 });
 
 export const service = (type, url, data) => {
-  alert(configHeader.baseURL)
+  alert(process.env.VUE_APP_BASE_API)
   let reqData = {
     method: type,
-    url: configHeader.baseURL + url,
+    url:process.env.VUE_APP_BASE_API + url,
     timeout: 0,
     headers: {},
   }
