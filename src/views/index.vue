@@ -119,7 +119,7 @@
                     <el-row type="flex">
                       <el-col :span="24">
                         <el-progress :stroke-width="14" :percentage="(detail.current_deposit_amount / 1500) * 100"
-                          :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
+                          :color="'#FCAF1E'" :define-back-color="'#FBECC2'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
                   </el-col>
@@ -194,7 +194,7 @@
                     <el-row type="flex">
                       <el-col :span="24">
                         <el-progress :stroke-width="14" :percentage="(detail.current_ty_bet_amount / 2888) * 100"
-                          :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
+                          :color="'#FCAF1E'" :define-back-color="'#FBECC2'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
                   </el-col>
@@ -210,7 +210,7 @@
                     <el-row type="flex">
                       <el-col :span="24">
                         <el-progress :stroke-width="14" :percentage="(detail.current_dj_bet_amount / 2888) * 100"
-                          :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
+                          :color="'#FCAF1E'" :define-back-color="'#FBECC2'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
                   </el-col>
@@ -226,7 +226,7 @@
                     <el-row type="flex">
                       <el-col :span="24">
                         <el-progress :stroke-width="14" :percentage="(detail.current_dz_bet_amount / 2888) * 100"
-                          :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
+                          :color="'#FCAF1E'" :define-back-color="'#FBECC2'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
                   </el-col>
@@ -303,7 +303,7 @@
                     <el-row type="flex">
                       <el-col :span="24">
                         <el-progress :stroke-width="14" :percentage="(detail.current_zr_win_amount / 2088) * 100"
-                          :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
+                          :color="'#FCAF1E'" :define-back-color="'#FBECC2'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
                   </el-col>
@@ -319,7 +319,7 @@
                     <el-row type="flex">
                       <el-col :span="24">
                         <el-progress :stroke-width="14" :percentage="(detail.current_qp_win_amount / 2088) * 100"
-                          :color="'#FCAF1E'" :define-back-color="'#fef6e3'" :show-text="false"></el-progress>
+                          :color="'#FCAF1E'" :define-back-color="'#FBECC2'" :show-text="false"></el-progress>
                       </el-col>
                     </el-row>
                   </el-col>
