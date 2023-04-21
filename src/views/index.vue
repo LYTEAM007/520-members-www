@@ -624,7 +624,7 @@ export default {
         act1_reword_prize: '0',//主题1
         act1_reword_point: '0',//已获得的积分
         current_deposit_amount: '0',//累计有效存款
-        act1_left_time: 1,//可冲刺次数
+        act1_left_time: 0,//可冲刺次数
         act2_reword_prize: '0',//主题2
         act2_reword_point: '0',
         current_ty_bet_amount: '0',
@@ -635,7 +635,7 @@ export default {
         act3_reword_point: '0',//
         current_zr_win_amount: '0',
         current_qp_win_amount: '0',
-        act3_left_time: 10,
+        act3_left_time: 0,
         act4_reword_prize: '0',//主题4
         act4_left_time: '0',
         total_point: '0',
@@ -644,11 +644,12 @@ export default {
       rewardDetail: [],
       dialogTips: false,
       dialogTipsMsg: '',
-      rewardTipsMsg: ''
+      rewardTipsMsg: '',
+      plaseLogin:'登录即可参与ManBetX万博“520万博运动惠”专题活动！'
     }
   },
   computed: {
-    ...mapGetters(['activityTime']),
+     ...mapGetters(['username']),
   },
   created() {
     this.getList()
@@ -677,7 +678,7 @@ export default {
           }, 3000)
           this.gainWard(1, count)
         } else {
-          this.dialogTipsMsg = '冲刺次数不足！'
+          this.dialogTipsMsg = !this.username?this.plaseLogin:'冲刺次数不足！'
           this.dialogTips = true
         }
       } else if (type == 'tl') {
@@ -688,7 +689,7 @@ export default {
           }, 3000)
           this.gainWard(2, count)
         } else {
-          this.dialogTipsMsg = '投篮次数不足！'
+          this.dialogTipsMsg = !this.username?this.plaseLogin:'投篮次数不足！'
           this.dialogTips = true
         }
       } else if (type == 'bh') {
@@ -699,7 +700,7 @@ export default {
           }, 3000)
           this.gainWard(3, count)
         } else {
-          this.dialogTipsMsg = '拔河次数不足！'
+          this.dialogTipsMsg = !this.username?this.plaseLogin:'拔河次数不足！'
           this.dialogTips = true
         }
 
@@ -711,7 +712,7 @@ export default {
           }, 3000)
           this.gainWard(4, count)
         } else {
-          this.dialogTipsMsg = '抽奖次数不足！'
+          this.dialogTipsMsg = !this.username?this.plaseLogin:'抽奖次数不足！'
           this.dialogTips = true
         }
       }
@@ -792,9 +793,9 @@ export default {
         } else {
           this.recordHistoryList = res.data.list
           this.recordHistoryListTotal = res.data.total
+          this.dialogVisibleRecord = true
         }
       })
-      this.dialogVisibleRecord = true
     },
     handleCurrentChange(val) {
       this.recordHistoryPage.page = val
