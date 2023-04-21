@@ -445,11 +445,11 @@
             <el-col :span="12">随机彩金+1点积分</el-col>
           </el-row>
           <el-row :gutter="20" class="tableBody" v-if="activeIndex == 2">
-            <el-col :span="12">每累计有效存款2,888元</el-col>
+            <el-col :span="12">每累计有效投注2,888元</el-col>
             <el-col :span="12">随机彩金+随机积分</el-col>
           </el-row>
           <el-row :gutter="20" class="tableBody" v-if="activeIndex == 3">
-            <el-col :span="12">每累计有效存款2,088元</el-col>
+            <el-col :span="12">每累计有效盈利2,088元</el-col>
             <el-col :span="12">随机彩金+随机积分</el-col>
           </el-row>
         </div>
@@ -553,11 +553,11 @@
             </el-table-column>
             <el-table-column prop="type" label="活动名称" align="center">
               <template slot-scope="scope">
-                <span v-show="scope.row.type == '1'">主题一抽奖</span>
-                <span v-show="scope.row.type == '2'">主题二</span>
-                <span v-show="scope.row.type == '3'">主题三</span>
-                <span v-show="scope.row.type == '4'">主题四</span>
-                <span v-show="scope.row.type == '5'">主题四排位</span>
+                <span v-show="scope.row.type == '1'">极限奔跑吧</span>
+                <span v-show="scope.row.type == '2'">竞技篮球火</span>
+                <span v-show="scope.row.type == '3'">力拔迎胜利</span>
+                <span v-show="scope.row.type == '4'">排位赛好礼</span>
+                <span v-show="scope.row.type == '5'">排位赛好礼-排位赛奖励</span>
               </template>
             </el-table-column>
             <el-table-column prop="prize" label="活动奖品内容" align="center">
