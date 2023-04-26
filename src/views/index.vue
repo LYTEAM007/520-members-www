@@ -381,7 +381,7 @@
                   </el-col>
                   <el-col :span="21">
                     <div
-                      :class="{ 'btn': detail.total_point >= 50, 'btnGray': detail.total_point < 50 || detail.act4_reword_prize }"
+                      :class="{ 'btn': detail.total_point >= 50, 'btnGray': detail.total_point < 50 || detail.act4_reword_prize!=0 }"
                       @click="getRankReward">领取排位赛奖励</div>
                     <div class="rankTips">提示：排位赛奖励请于27号领取</div>
                   </el-col>
@@ -494,7 +494,7 @@
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金+1点积分</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金<span v-show="detail.act1_reword_point!=100">+1点积分</span></p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
@@ -505,7 +505,7 @@
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金+{{ item.point }}点积分</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金<span v-show="detail.act2_reword_point!=100">+{{ item.point }}点积分</span></p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
@@ -516,7 +516,7 @@
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金+{{ item.point }}点积分</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金<span v-show="detail.act3_reword_point!=100">+{{ item.point }}</span>点积分</p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
@@ -771,8 +771,7 @@ export default {
     getRankReward() {
       getPrize({
         act: 5,
-        times: 1,
-        test: 1
+        times: 1
       }).then((res) => {
         if (res.code != 200) {
           this.dialogTipsMsg = this.returnMsg('theme5_is_open', 'theme5_status', res.message)
@@ -788,8 +787,7 @@ export default {
       if (act != 4) {
         getPrize({
           act: act,
-          times: count,
-          test: 1
+          times: count
         }).then((res) => {
           if (res.code != 200) {
             this.rewardTipsMsg = res.message
@@ -800,8 +798,7 @@ export default {
       } else {
         getPrizeThird({
           act: act,
-          times: count,
-          test: 1
+          times: count
         }).then((res) => {
           if (res.code != 200) {
             this.rewardTipsMsg = res.message
