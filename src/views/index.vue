@@ -382,7 +382,7 @@
                   </el-col>
                   <el-col :span="21">
                     <div
-                      :class="{ 'btn': detail.total_point >= 50, 'btnGray': detail.total_point < 50 || detail.act4_reword_prize }"
+                      :class="{ 'btn': detail.total_point >= 50, 'btnGray': detail.total_point < 50 || detail.act4_reword_prize!=0 }"
                       @click="getRankReward">领取排位赛奖励</div>
                     <div class="rankTips">提示：排位赛奖励请于27号领取</div>
                   </el-col>
@@ -495,7 +495,7 @@
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金+1点积分</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金<span v-show="item.point!=0">+1点积分</span></p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
@@ -506,7 +506,7 @@
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金+{{ item.point }}点积分</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金<span v-show="item.point!=0">+{{ item.point }}点积分</span></p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
@@ -517,7 +517,7 @@
         <div class="dialogContent">
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
-            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金+{{ item.point }}点积分</p>
+            <p v-for="(item, index) in rewardDetail" :key="index">{{ item.prize }}彩金<span v-show="item.point!=0">+{{ item.point }}</span>点积分</p>
           </div>
         </div>
         <div class="dialogBtn" @click="handleClose">确定</div>
@@ -672,13 +672,13 @@ export default {
               this.detail = Object.assign(res.data, {
                 skip_animei: res.data.skip_animei == '1' ? true : false
               })
-              if (!this.openSetting.theme1_is_open) {
+              if (!this.openSetting.theme1_is_open||this.openSetting.theme1_status!=2) {
                 this.detail.act1_reword_prize = 0
                 this.detail.act1_reword_point = 0
                 this.detail.act1_left_time = 0
                 this.detail.current_deposit_amount = 0
               }
-              if (!this.openSetting.theme2_is_open) {
+              if (!this.openSetting.theme2_is_open||this.openSetting.theme2_status!=2) {
                 this.detail.act2_reword_prize = 0
                 this.detail.act2_reword_point = 0
                 this.detail.act2_left_time = 0
@@ -686,14 +686,14 @@ export default {
                 this.detail.current_dj_bet_amount = 0
                 this.detail.current_dz_bet_amount = 0
               }
-              if (!this.openSetting.theme3_is_open) {
+              if (!this.openSetting.theme3_is_open||this.openSetting.theme3_status!=2) {
                 this.detail.act3_reword_prize = 0
                 this.detail.act3_reword_point = 0
                 this.detail.act3_left_time = 0
                 this.detail.current_zr_win_amount = 0
                 this.detail.current_qp_win_amount = 0
               }
-              if (!this.openSetting.theme4_is_open) {
+              if (!this.openSetting.draw_is_open||this.openSetting.draw_status!=2) {
                 this.detail.act4_reword_prize = 0
                 this.detail.act4_left_time = 0
                 this.detail.total_point = 0
@@ -772,8 +772,7 @@ export default {
     getRankReward() {
       getPrize({
         act: 5,
-        times: 1,
-        test: 1
+        times: 1
       }).then((res) => {
         if (res.code != 200) {
           this.dialogTipsMsg = this.returnMsg('theme5_is_open', 'theme5_status', res.message)
@@ -789,8 +788,7 @@ export default {
       if (act != 4) {
         getPrize({
           act: act,
-          times: count,
-          test: 1
+          times: count
         }).then((res) => {
           if (res.code != 200) {
             this.rewardTipsMsg = res.message
@@ -801,8 +799,7 @@ export default {
       } else {
         getPrizeThird({
           act: act,
-          times: count,
-          test: 1
+          times: count
         }).then((res) => {
           if (res.code != 200) {
             this.rewardTipsMsg = res.message
@@ -814,6 +811,7 @@ export default {
     },
     handleClose() {
       this.dialogVisible = false
+      this.rewardDetail=[]
       if (!this.detail.skip_animei) {
         setTimeout(() => this.elementVisibleCc = true, 300)
       } else {
