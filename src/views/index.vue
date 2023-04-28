@@ -10,7 +10,7 @@
               <el-col :span="8">
                 <div class="gridContentBorder item">
                   <div>【活动时间】</div>
-                  <div>
+                  <div class="time desc">
                     2023年5月20日-2023年5月27日
                   </div>
                 </div>
@@ -18,7 +18,7 @@
               <el-col :span="8">
                 <div class="gridContentBorder item">
                   <div>【活动对象】</div>
-                  <div>
+                  <div class="user desc">
                     全体ManBetX万博会员
                   </div>
                 </div>
@@ -26,8 +26,8 @@
               <el-col :span="8">
                 <div class="gridContentBorder item gridContentBorderLast">
                   <div>【活动平台】</div>
-                  <div>
-                    全体ManBetX万博全平台（<br>不含彩票、捕鱼、万博体育-百家乐、亚洲体育平台）
+                  <div class="desc">
+                    全平台 <br>（不含彩票、捕鱼、万博体育-百家乐、亚洲体育平台）
                   </div>
                 </div>
               </el-col>
@@ -37,8 +37,9 @@
         <div class="activeTitle">
           <img src="../assets/image/titleBanner.png" alt="" class="bgBanner">
           <div class="bgText">
+            <div>活动内容</div>
             <div>
-              【活动内容】520万博会员日运动大会，体育健将敢闯敢拼，彩金
+              520万博会员日运动大会，体育健将敢闯敢拼，彩金
             </div>
             <div>
               积分双倍惊喜，积分累计幸运抽奖，最高累计可获300积分
@@ -922,7 +923,7 @@ export default {
         line-height 60px
         background linear-gradient(#FB4343, #FB9A2B)    
         -webkit-background-clip text
-        text-shadow 0 7px 0 rgba(255,148,47,0.19)
+        
         font-weight bold
       }
     }
@@ -941,6 +942,19 @@ export default {
     }
     .gridContentBorder{
       position relative
+
+      .desc {
+       font-size 18px
+      color #333333
+      text-align center
+      }
+      .time { 
+        padding-top 5px
+      }
+      .user {
+        padding-top 5px
+      }
+      
     }
     .gridContentBorder::after{
       content ''
@@ -961,16 +975,16 @@ export default {
     item >div{
       height 36px
       line-height 36px
-      font-size 16px
+      font-size 24px
       color #333333;
       text-align center
       line-height 36px
-      font-weight 400
+      font-weight 600
     }
     .item div:nth-child(1){
       margin 15px 0 8px 0
       font-family MicrosoftYaHei-Bold
-      font-size 18px
+      font-size 24px
       color #333333
       text-align center
       font-weight 700
