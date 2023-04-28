@@ -1037,8 +1037,8 @@ export default {
   methods: {
     getList() {
       if (!this.username) {
-        // this.dialogTipsMsg = this.plaseLogin
-        // this.dialogTips = true
+        this.dialogTipsMsg = this.plaseLogin
+        this.dialogTips = true
       } else {
         getSetting().then((res) => {
           this.openSetting = res.data;
