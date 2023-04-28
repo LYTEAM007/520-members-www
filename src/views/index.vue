@@ -716,7 +716,7 @@
             </el-row>
           </div>
         </div>
-        <div
+        <!-- <div
           class="tableData"
           v-if="activeIndex == 1 || activeIndex == 2 || activeIndex == 3"
         >
@@ -736,7 +736,7 @@
             <el-col :span="12">每累计有效盈利2,088元</el-col>
             <el-col :span="12">随机彩金+随机积分</el-col>
           </el-row>
-        </div>
+        </div> -->
         <div class="tableDataRank" v-if="activeIndex == 4">
           <el-table
             :data="tableData"
@@ -754,16 +754,16 @@
           <div class="tipsTitle">【温馨提示】</div>
           <div class="tipsItem">1.本优惠所获彩金仅需完成五倍流水不限平台。</div>
           <div class="tipsItem">
-            2.本优惠所需存款及投注不与其他活动共享，可与反水活动共享。
+            2.本优惠所需存款及投注不与其他活动共享，可与返水活动共享。
           </div>
           <div class="tipsItem" style="line-height: 40px">
-            3.本优惠仅对已结算并产生输赢结果的投注流水进行计算。所有拒绝投注、打平、任何情况出现对押情况的投注（例：于百家乐同时下注庄家及闲家，百家乐当中开和退还本金）及赔率低于（万博体育、新万博体育、新亚洲体育、新万博电竞亚洲盘0.70，欧洲盘1.70）；（欧洲体育、万博电竞亚洲盘0.50，欧洲盘1.50）或其他对应赔率，串关投注将不予计算。
+            3.本优惠仅对已结算并产生输赢结果的投注流水进行计算。所有拒绝投注，无效投注，打平，任何出现对押情况的投注（例：于百家乐同时下注庄家及闲家，百家乐当中开和退还本金）及赔率低于（万博体育、新万博体育、新亚洲体育、新万博电竞亚洲盘0.70，欧洲盘1.70）；（欧洲体育、万博电竞亚洲盘0.50，欧洲盘1.50）或其他对应赔率，串关投注将不予计算。
           </div>
           <div class="tipsItem">
-            4.本优惠符合的会员需在【活动指定时间】内点击操作，超时既视为放弃该活动奖励。
+            4.本优惠符合的会员需在【活动指定时间】内点击操作， <span class="tipsItemColor"> 所获彩金系统将自动派发至您的游戏账户 </span>，超时即视为放弃该活动奖励。
           </div>
-          <div class="tipsItemColor marginTop20">
-            本优惠遵循ManBetX万博【一般优惠规则与条款】。
+          <div class=" marginTop20">
+            本优惠遵循ManBetX万博 <span class="tipsItemColor">【一般优惠规则与条款】</span>。
           </div>
         </div>
       </div>
@@ -1496,7 +1496,7 @@ export default {
   }
 
   .tableDataRank {
-    margin: 40px 0 40px 0;
+    margin-top: 40px;
   }
 
   .tableDataRank>>>.el-table {
@@ -1546,7 +1546,7 @@ export default {
 
   .tips {
     color: black;
-    padding: 0 50px 0px 20px;
+    padding: 40px 50px 0px 20px;
     font-family: MicrosoftYaHei-Bold;
 
     .tipsTitle {
