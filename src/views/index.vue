@@ -1308,7 +1308,7 @@ export default {
     },
 
     open() {
-      window.open("https://jc.8manbet.net/favourable.html","_blank")
+      window.open("https://cn.4ferzaw4al5i.com/home/guidancecontent?t=promo","_blank")
     }
   },
   watch: {},
