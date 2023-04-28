@@ -763,7 +763,7 @@
             4.本优惠符合的会员需在【活动指定时间】内点击操作， <span class="tipsItemColor"> 所获彩金系统将自动派发至您的游戏账户 </span>，超时即视为放弃该活动奖励。
           </div>
           <div class=" marginTop20">
-            本优惠遵循ManBetX万博 <span class="tipsItemColor">【一般优惠规则与条款】</span>。
+            本优惠遵循ManBetX万博 <span class="tipsItemColor cr" @click="open">【一般优惠规则与条款】</span>。
           </div>
         </div>
       </div>
@@ -1306,6 +1306,10 @@ export default {
         });
       }
     },
+
+    open() {
+      window.open("https://jc.8manbet.net/favourable.html","_blank")
+    }
   },
   watch: {},
 };
@@ -2082,5 +2086,9 @@ export default {
       font-weight: bold;
     }
   }
+}
+
+.cr {
+  cursor: pointer;
 }
 </style>
