@@ -1709,11 +1709,7 @@ export default {
     color: #FFFFFF;
     text-align: left;
     font-weight: 400;
-    transform: skewX(-25deg);
-
-    >div {
-      transform: skewX(25deg);
-    }
+    border-radius: 8px;
   }
 
   .submitBtnGray {
