@@ -1,5 +1,8 @@
 <template>
   <div class="index">
+    <div class="logo">
+      <img src="../assets/image/logo.png" height="64px" alt="">
+    </div>
     <!-- 主页面 -->
     <div class="container">
       <div class="main">
@@ -37,9 +40,7 @@
         <div class="activeTitle">
           <!-- <img src="../" alt="" class="bgBanner" /> -->
           <div class="bgText">
-            <div class="activity-desc">活动内容</div>
-            <div>520万博会员日运动大会，体育健将敢闯敢拼，彩金</div>
-            <div>积分双倍惊喜，积分累计幸运抽奖，最高累计可获300积分</div>
+            
           </div>
         </div>
         <div class="activeTheme">
@@ -1317,17 +1318,20 @@ export default {
 
 <style lang="stylus" scoped>
 .index {
-  height: 2930px;
-  width: 100vw;
-  background: url('../assets/image/bg.jpg');
+  height: 2772px;
+  background: url('../assets/image/bg.jpg') center no-repeat;
   background-size: 100% 100%;
   clearfix();
   font-family: MicrosoftYaHei;
 }
 
+.logo {
+  margin-left: 160px;
+  margin-top: 70px;
+}
 .main {
   width: 1200px;
-  margin: 960px auto 0;
+  margin: 760px auto 0;
 
   .activeContent {
     height: 105px;
@@ -2064,24 +2068,10 @@ export default {
   text-align: center;
 }
 .activeTitle {
-  width: 1262px;
-  height: 190px;
+  width: 1200px;
+  height: 180px;
   background: url("~@/assets/image/titleBanner.png") center no-repeat;
   background-size: cover;
-
-  .bgText {
-    text-align: center;
-    padding-top: 20px;
-
-    div {
-      font-family: FZZDHJW--GB1-0;
-      font-size: 36px;
-      color: transparent;
-      background: linear-gradient(#fb4343, #fb9a2b);
-      -webkit-background-clip: text;
-      font-weight: bold;
-    }
-  }
 }
 
 .cr {
