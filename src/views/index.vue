@@ -1,7 +1,7 @@
 <template>
   <div class="index">
     <div class="logo">
-      <img src="../assets/image/logo.png" height="64px" alt="">
+      <img src="../assets/image/logo.png" height="64px" alt="" />
     </div>
     <!-- 主页面 -->
     <div class="container">
@@ -26,10 +26,10 @@
                 <div class="gridContentBorder item gridContentBorderLast">
                   <div>【活动平台】</div>
                   <div class="desc platform">
-                    全平台
+                    ManBetX万博全平台
 
-                    <span
-                      >（不含彩票、捕鱼、CQ9真人、万博体育-百家乐、亚洲体育平台）
+                    <span>
+                      <p>（不含彩票、捕鱼、CQ9真人、亚洲体育平台）</p>
                     </span>
                   </div>
                 </div>
@@ -39,9 +39,7 @@
         </div>
         <div class="activeTitle">
           <!-- <img src="../" alt="" class="bgBanner" /> -->
-          <div class="bgText">
-            
-          </div>
+          <div class="bgText"></div>
         </div>
         <div class="activeTheme">
           <div @click="changaTabs(1, 'cc')">
@@ -763,8 +761,11 @@
           <div class="tipsItem">
             4.本优惠符合的会员需在【活动指定时间】内点击操作，所获彩金系统将自动派发至您的游戏账户，超时即视为放弃该活动奖励。
           </div>
-          <div class=" marginTop20">
-            本优惠遵循ManBetX万博 <span class="tipsItemColor cr" @click="open">【一般优惠规则与条款】</span>。
+          <div class="marginTop20">
+            本优惠遵循ManBetX万博
+            <span class="tipsItemColor cr" @click="open"
+              >【一般优惠规则与条款】</span
+            >。
           </div>
         </div>
       </div>
@@ -900,6 +901,7 @@
       :center="true"
       :before-close="handleCloseRecord"
       class="rewardRecord"
+   
     >
       <img src="../assets/image/alert-bg.jpg" alt="" />
       <div class="recordContent">
@@ -941,6 +943,7 @@
       width="400px"
       :before-close="handleCloseMsg"
       class="tipsDialog"
+      :style="{'top': top + 'px'}"
     >
       <div class="tipsContent">
         <div>{{ dialogTipsMsg }}</div>
@@ -951,6 +954,8 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
+
+import {_debounce } from '@/common/js/util.js'
 import {
   getActivityIndex,
   getPrize,
@@ -1027,6 +1032,7 @@ export default {
       rewardTipsMsg: "",
       plaseLogin: "登录即可参与ManBetX万博“520万博运动惠”专题活动！",
       openSetting: {},
+      top: -230,
     };
   },
   computed: {
@@ -1035,11 +1041,14 @@ export default {
   created() {
     this.getList();
   },
+  mounted() {
+    this.receiveIframe();
+  },
   methods: {
     getList() {
       if (!this.username) {
-        this.dialogTipsMsg = this.plaseLogin
-        this.dialogTips = true
+        // this.dialogTipsMsg = this.plaseLogin;
+        // this.dialogTips = true;
       } else {
         getSetting().then((res) => {
           this.openSetting = res.data;
@@ -1309,8 +1318,29 @@ export default {
     },
 
     open() {
-      window.open("https://cn.4ferzaw4al5i.com/home/guidancecontent?t=promo","_blank")
-    }
+      window.open(
+        "https://cn.4ferzaw4al5i.com/home/guidancecontent?t=promo",
+        "_blank"
+      );
+    },
+
+    receiveIframe() {
+      let _ = this;
+      window.addEventListener(
+        "message",
+        function (e) {
+          _.getTop(e);
+        },
+        false
+      );
+    },
+    getTop: _debounce(function (e) {
+      this.top = "-230";
+      if (e.data && e.data.type === "scroll") {
+        this.top = Number(e.data.scrollTop) - 230;
+        if (this.top > 2000) this.top = 2000;
+      } 
+    }, 500),
   },
   watch: {},
 };
@@ -1329,12 +1359,13 @@ export default {
   margin-left: 160px;
   margin-top: 70px;
 }
+
 .main {
   width: 1200px;
   margin: 760px auto 0;
 
   .activeContent {
-    height: 105px;
+    height: 125px;
     padding: 0 5px;
     background: #FFFFFF;
     background-image: linear-gradient(180deg, #FFFFFF 0%, #FEEEC8 100%);
@@ -1354,9 +1385,9 @@ export default {
       content: '';
       display: inline-block;
       width: 1px;
-      height: 70px;
+      height: 90px;
       position: absolute;
-      top: 0px;
+      top: 5px;
       right: 0px;
       background-image: linear-gradient(bottom, #fff -100%, orange 50%, #fff 100%);
     }
@@ -1958,7 +1989,10 @@ export default {
   width: 700px;
   height: 750px;
   box-shadow: none;
-  position: relative;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  margin-left: -350px;
 }
 
 .rewardRecord img {
@@ -2056,6 +2090,7 @@ export default {
   text-align: center;
   padding-top: 10px;
 }
+
 .platform {
   padding-top: 0;
 
