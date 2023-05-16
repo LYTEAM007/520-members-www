@@ -2053,7 +2053,7 @@ export default {
 }
 
 .recordTable {
-  height: calc(100% - 170px);
+  height: 528px;
   background: white;
   margin-top: 10px;
   box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.17);
