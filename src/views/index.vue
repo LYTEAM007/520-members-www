@@ -1987,17 +1987,21 @@ export default {
 
 .rewardRecord >>>.el-dialog {
   width: 700px;
-  height: 750px;
+  height: 680px;
   box-shadow: none;
   position: fixed;
-  top: 20px;
-  left: 50%;
+  top: 1000px;
   margin-left: -350px;
+  left: 50%;
+}
+
+.rewardRecord >>>.el-dialog__header {
+  padding: 5px 15px 10px;
 }
 
 .rewardRecord img {
   width: 100%;
-  height: 660px;
+  height: 630px;
 }
 
 .paginationEl {
@@ -2039,7 +2043,7 @@ export default {
 }
 
 .recordTitle {
-  margin-top: 70px;
+  margin-top: 45px;
   text-align: center;
   font-family: MicrosoftYaHei;
   font-size: 30px;
