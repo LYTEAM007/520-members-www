@@ -890,8 +890,8 @@
           <div class="rewardIframeContent">
             <p v-for="(item, index) in rewardDetail" :key="index">
               {{ item.prize }}彩金<span v-show="item.point != 0"
-                >+{{ item.point }}</span
-              >点积分
+                >+{{ item.point }}点积分</span
+              >
             </p>
           </div>
         </div>
