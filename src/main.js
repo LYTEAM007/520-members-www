@@ -26,6 +26,7 @@ new Vue({
     const username = getUrlParams().username
     if (username) {
       store.commit('SET_USERNAME', username)
+      sessionStorage.setItem('username',username)
     }
   },
 }).$mount('#app')

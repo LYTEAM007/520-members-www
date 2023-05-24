@@ -10,7 +10,7 @@ const _axios = axios.create(configHeader)
 _axios.interceptors.request.use((config) => {
   // 在发送请求之前做些什么
   try {
-    config.headers['Authorization'] = getUrlParams().username || ''
+    config.headers['Authorization'] = getUrlParams().username || sessionStorage.username
   } catch (e) {
   }
   config.headers['action'] = 'web'
@@ -33,7 +33,7 @@ _axios.interceptors.response.use((response) => {
 export const service = (type, url, data) => {
   let reqData = {
     method: type,
-    url: process.env.VUE_APP_BASE_API+url,
+    url: process.env.VUE_APP_BASE_API + url,
     timeout: 0,
     headers: {},
   }
@@ -47,7 +47,7 @@ export const service = (type, url, data) => {
   return _axios(reqData).then((res) => {
     return res.data
   }).catch(function (error) {
-    console.log(error,"error")
+    console.log(error, "error")
     return Promise.reject(error)
   })
 }

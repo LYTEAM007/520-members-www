@@ -587,7 +587,7 @@
                       </div>
                     </el-col>
 
-                      <el-col :span="7">
+                    <el-col :span="7">
                       <div
                         :class="{
                           submitBtnGray: detail.act3_left_time < 100,
@@ -849,7 +849,9 @@
           <div class="rewardIframeTitle">恭 喜 您 获 得</div>
           <div class="rewardIframeContent">
             <p v-for="(item, index) in rewardDetail" :key="index">
-              {{ item.prize }}彩金<span v-show="item.point != 0">{{item.point}}点积分</span>
+              {{ item.prize }}彩金<span v-show="item.point != 0"
+                >{{ item.point }}点积分</span
+              >
             </p>
           </div>
         </div>
@@ -929,47 +931,44 @@
       </div>
     </el-dialog>
     <!-- 记录弹框 -->
-    <el-dialog
-      :visible.sync="dialogVisibleRecord"
-      width="1000"
-      :center="true"
-      :before-close="handleCloseRecord"
-      class="rewardRecord"
-   
-    >
-      <img src="../assets/image/alert-bg.jpg" alt="" />
-      <div class="recordContent">
-        <div class="recordTitle">中奖记录</div>
-        <div class="recordTable">
-          <el-table :data="recordHistoryList" style="width: 100%">
-            <el-table-column prop="created_at" label="时间" align="center">
-            </el-table-column>
-            <el-table-column prop="type" label="活动名称" align="center">
-              <template slot-scope="scope">
-                <span v-show="scope.row.type == '1'">极限奔跑吧</span>
-                <span v-show="scope.row.type == '2'">竞技篮球火</span>
-                <span v-show="scope.row.type == '3'">力拔迎胜利</span>
-                <span v-show="scope.row.type == '4'">排位赛好礼</span>
-                <span v-show="scope.row.type == '5'"
-                  >排位赛好礼-排位赛奖励</span
-                >
-              </template>
-            </el-table-column>
-            <el-table-column prop="prize" label="活动奖品内容" align="center">
-            </el-table-column>
-          </el-table>
-          <el-pagination
-            class="paginationEl"
-            v-show="recordHistoryListTotal > 0"
-            @current-change="handleCurrentChange"
-            layout="total, prev, pager, next"
-            :page-size="recordHistoryPage.size"
-            :total="recordHistoryListTotal"
-          >
-          </el-pagination>
+
+    <RewardDialog :dialogVisible="dialogVisibleRecord" :top="top"  @close="handleCloseRecord" >
+      <div class="rewardRecord">
+        <img src="../assets/image/alert-bg.jpg" alt="" />
+        <div class="recordContent">
+          <div class="recordTitle">中奖记录</div>
+          <div class="recordTable">
+            <el-table :data="recordHistoryList" style="width: 100%">
+              <el-table-column prop="created_at" label="时间" align="center">
+              </el-table-column>
+              <el-table-column prop="type" label="活动名称" align="center">
+                <template slot-scope="scope">
+                  <span v-show="scope.row.type == '1'">极限奔跑吧</span>
+                  <span v-show="scope.row.type == '2'">竞技篮球火</span>
+                  <span v-show="scope.row.type == '3'">力拔迎胜利</span>
+                  <span v-show="scope.row.type == '4'">排位赛好礼</span>
+                  <span v-show="scope.row.type == '5'"
+                    >排位赛好礼-排位赛奖励</span
+                  >
+                </template>
+              </el-table-column>
+              <el-table-column prop="prize" label="活动奖品内容" align="center">
+              </el-table-column>
+            </el-table>
+            <el-pagination
+              class="paginationEl"
+              v-show="recordHistoryListTotal > 0"
+              @current-change="handleCurrentChange"
+              layout="total, prev, pager, next"
+              :page-size="recordHistoryPage.size"
+              :total="recordHistoryListTotal"
+            >
+            </el-pagination>
+          </div>
         </div>
       </div>
-    </el-dialog>
+    </RewardDialog>
+   
     <!--提示弹框 -->
     <el-dialog
       :title="'提示'"
@@ -977,7 +976,7 @@
       width="400px"
       :before-close="handleCloseMsg"
       class="tipsDialog"
-      :style="{'top': top + 'px'}"
+      :style="{ top: top + 'px' }"
     >
       <div class="tipsContent">
         <div>{{ dialogTipsMsg }}</div>
@@ -988,8 +987,9 @@
 </template>
 <script>
 import { mapGetters } from "vuex";
+import { _debounce } from "@/common/js/util.js";
 
-import {_debounce } from '@/common/js/util.js'
+import RewardDialog from "@/components/dialog";
 import {
   getActivityIndex,
   getPrize,
@@ -997,9 +997,10 @@ import {
   getPrizeThird,
   skipAnimei,
   getSetting,
-  getPrize100
+  getPrize100,
 } from "@/api";
 export default {
+  components: { RewardDialog },
   data() {
     return {
       checked: false,
@@ -1033,7 +1034,7 @@ export default {
       },
       activeIndex: "1",
       dialogVisible: false,
-      dialogVisibleRecord: false,
+      dialogVisibleRecord: true,
       elementVisibleCc: true,
       checkedCj: false,
       checkedCc: false,
@@ -1067,7 +1068,7 @@ export default {
       rewardTipsMsg: "",
       plaseLogin: "登录即可参与ManBetX万博“520万博运动惠”专题活动！",
       openSetting: {},
-      top: -230,
+      top: 100,
     };
   },
   computed: {
@@ -1255,8 +1256,8 @@ export default {
       });
     },
     gainWard(act, count) {
-      if(count == 100) {
-          getPrize100({
+      if (count == 100) {
+        getPrize100({
           act: act,
           times: count,
         }).then((res) => {
@@ -1266,7 +1267,7 @@ export default {
             this.rewardDetail = res.data;
           }
         });
-        return
+        return;
       }
       if (act != 4) {
         getPrize({
@@ -1383,11 +1384,11 @@ export default {
       );
     },
     getTop: _debounce(function (e) {
-      this.top = "-230";
+      this.top = 100;
       if (e.data && e.data.type === "scroll") {
-        this.top = Number(e.data.scrollTop) - 230;
+        this.top = Number(e.data.scrollTop);
         if (this.top > 2000) this.top = 2000;
-      } 
+      }
     }, 500),
   },
   watch: {},
@@ -2033,14 +2034,12 @@ export default {
   cursor: pointer;
 }
 
-.rewardRecord >>>.el-dialog {
+.rewardRecord  {
   width: 700px;
   height: 680px;
-  box-shadow: none;
-  position: fixed;
-  top: 1000px;
-  margin-left: -350px;
-  left: 50%;
+  // box-shadow: none;
+
+  
 }
 
 .rewardRecord >>>.el-dialog__header {
@@ -2091,7 +2090,7 @@ export default {
 }
 
 .recordTitle {
-  margin-top: 45px;
+
   text-align: center;
   font-family: MicrosoftYaHei;
   font-size: 30px;
