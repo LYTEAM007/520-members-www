@@ -1034,7 +1034,7 @@ export default {
       },
       activeIndex: "1",
       dialogVisible: false,
-      dialogVisibleRecord: true,
+      dialogVisibleRecord: false,
       elementVisibleCc: true,
       checkedCj: false,
       checkedCc: false,
