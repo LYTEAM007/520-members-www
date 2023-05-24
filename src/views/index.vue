@@ -246,6 +246,17 @@
                         冲刺三次
                       </div>
                     </el-col>
+                    <el-col :span="7">
+                      <div
+                        :class="{
+                          submitBtnGray: detail.act1_left_time < 100,
+                          submitBtn: detail.act1_left_time >= 100,
+                        }"
+                        @click="showActivity('cc', 100)"
+                      >
+                        冲刺一百次
+                      </div>
+                    </el-col>
                   </el-row>
                 </el-col>
                 <el-col :span="24" class="marginTop40">
@@ -420,6 +431,17 @@
                         <div>投篮三次</div>
                       </div>
                     </el-col>
+                    <el-col :span="7">
+                      <div
+                        :class="{
+                          submitBtnGray: detail.act2_left_time < 100,
+                          submitBtn: detail.act2_left_time >= 100,
+                        }"
+                        @click="showActivity('tl', 100)"
+                      >
+                        <div>投篮一百次</div>
+                      </div>
+                    </el-col>
                   </el-row>
                 </el-col>
                 <el-col :span="24" class="marginTop40">
@@ -562,6 +584,18 @@
                         @click="showActivity('bh', 3)"
                       >
                         <div>拔河三次</div>
+                      </div>
+                    </el-col>
+
+                      <el-col :span="7">
+                      <div
+                        :class="{
+                          submitBtnGray: detail.act3_left_time < 100,
+                          submitBtn: detail.act3_left_time >= 100,
+                        }"
+                        @click="showActivity('bh', 100)"
+                      >
+                        <div>拔河一百次</div>
                       </div>
                     </el-col>
                   </el-row>
@@ -963,6 +997,7 @@ import {
   getPrizeThird,
   skipAnimei,
   getSetting,
+  getPrize100
 } from "@/api";
 export default {
   data() {
@@ -1220,6 +1255,19 @@ export default {
       });
     },
     gainWard(act, count) {
+      if(count == 100) {
+          getPrize100({
+          act: act,
+          times: count,
+        }).then((res) => {
+          if (res.code != 200) {
+            this.rewardTipsMsg = res.message;
+          } else {
+            this.rewardDetail = res.data;
+          }
+        });
+        return
+      }
       if (act != 4) {
         getPrize({
           act: act,
@@ -1734,7 +1782,7 @@ export default {
 
   .submitBtn {
     display: inline-block;
-    padding: 0 30px;
+    padding: 0 20px;
     height: 50px;
     line-height: 50px;
     cursor: pointer;
@@ -1749,7 +1797,7 @@ export default {
 
   .submitBtnGray {
     display: inline-block;
-    padding: 0 30px;
+    padding: 0 20px;
     height: 50px;
     line-height: 50px;
     cursor: pointer;
